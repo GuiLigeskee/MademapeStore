@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
-const UserButtonsSchema = new Schema(
-    {
-        style: String,
-        title: String,
-        url: String,
-        acessos: Array,
-        userId: mongoose.ObjectId,
-        userName: String,
-    },
-    {
-        timestamps: true,
-    }
-);
+const buttonSchema = new mongoose.Schema({
+  style: String,
+  icon: String,
+  colorButton: String,
+  title: String,
+  colorTitle: String,
+  url: String,
+  clicks: { type: Number, default: 0 },
+  userId: mongoose.ObjectId,
+  userName: String,
+}, {
+    timestamps: true,
+});
 
-UserButtons = mongoose.model("UserButtons", photoSchema);
+Buttons = mongoose.model("Buttons", photoSchema);
 
-module.exports = UserButtons
+module.exports = mongoose.model("Button", buttonSchema);
