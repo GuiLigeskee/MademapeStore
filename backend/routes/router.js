@@ -7,6 +7,6 @@ router.get("/", (req, res) => {
 })
 
 router.use("/api/users", require("./UserRoutes"));
-
+router.use("/api/button", require("./ButtonsRoutes"));
 
 module.exports = router;

@@ -1,24 +1,28 @@
-// const express = require("express");
-// const router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-// const {
-//   insertButton,
-//   deleteButton,
-//   getAllButtons,
-//   getUserButtons,
-//   getButtonById,
-//   updateButton,
-//   clickButton, // Adicione esta rota
-// } = require("../controllers/buttons");
+// controllers
+const {
+    insertButton,
+    deleteButton,
+    getUserButtons,
+    updateButton,
+    counterClicks
+} = require("../controllers/ButtonsController");
 
+// Middleware
+const authGuard = require("../middlewares/authGuard");
+const validate = require("../middlewares/handleValidation");
+const {
+    buttonInsertValidation,
+    buttonUpdateValidation
+} = require("../middlewares/buttonValidation");
 
-// // rotas
-// router.post("/", insertButton);
-// router.delete("/:id", deleteButton);
-// router.get("/", getAllButtons);
-// router.get("/user/:id", getUserButtons);
-// router.get("/:id", getButtonById);
-// router.put("/:id", updateButton);
-// router.post("/:id/click", clickButton); // Rota para clicar em um botão
+// Routes
+router.get("/user/:id", getUserButtons); 
+router.post("/", authGuard, buttonInsertValidation(), validate, insertButton);
+router.delete("/:id", authGuard, deleteButton);
+router.put("/:id", authGuard, buttonUpdateValidation(), validate, updateButton);
+router.put("/clicks/:id", authGuard, counterClicks);
 
-// module.exports = router;
+module.exports = router;
