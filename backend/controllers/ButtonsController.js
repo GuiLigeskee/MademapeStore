@@ -7,8 +7,6 @@ const insertButton = async (req, res) => {
   const { title, colorTitle, backgroundColor, format, icon, url, clicks } =
     req.body;
 
-  console.log(body);
-
   const reqUser = req.user;
   const user = await User.findById(reqUser._id);
 
@@ -52,13 +50,13 @@ const deleteButton = async (req, res) => {
     return;
   }
 
-  // check if photo belongs to user
-  if (!deleteButton.userId.equals(reqUser._id)) {
-    res
-      .status(422)
-      .json({ errors: "Ocorreu um erro, tente novamente mais tarde." });
-    return;
-  }
+  // // check if photo belongs to user
+  // if (!deleteButton.userId.equals(reqUser._id)) {
+  //   res
+  //     .status(422)
+  //     .json({ errors: "Ocorreu um erro, tente novamente mais tarde." });
+  //   return;
+  // }
 
   await Buttons.findByIdAndDelete(button._id);
 
