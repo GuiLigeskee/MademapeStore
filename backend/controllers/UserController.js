@@ -139,10 +139,24 @@ const getUserById = async (req, res) => {
   res.status(200).json(user);
 };
 
+// Get user by id
+const getUsers = async (req, res) => {
+  const users = await User.find({}, "_id name email");
+
+  // Check if user exists
+  if (!users) {
+    res.status(404).json({ errors: ["Erro"] });
+    return;
+  }
+
+  res.status(200).json(users);
+};
+
 module.exports = {
   register,
   getCurrentUser,
   login,
   update,
   getUserById,
+  getUsers,
 };

@@ -8,30 +8,32 @@ const {
   login,
   update,
   getUserById,
+  getUsers,
 } = require("../controllers/UserController");
 
 // Middlewares
 const validate = require("../middlewares/handleValidation");
 const {
-    userCreateValidation,
-    loginValidation,
-    userUpdateValidation,
+  userCreateValidation,
+  loginValidation,
+  userUpdateValidation,
 } = require("../middlewares/userValidation");
 const authGuard = require("../middlewares/authGuard");
-const {imageUpload} = require("../middlewares/imageUpload");
+const { imageUpload } = require("../middlewares/imageUpload");
 
 // routes
-router.post("/register",userCreateValidation(), validate, register);
-router.post("/profile", authGuard, getCurrentUser);
+router.post("/register", userCreateValidation(), validate, register);
+router.get("/profile", authGuard, getCurrentUser);
 router.post("/login", loginValidation(), validate, login);
 router.put(
-    "/",
-    authGuard,
-    userUpdateValidation(),
-    validate,
-    imageUpload.single("profileImage"),
-    update,
+  "/update",
+  authGuard,
+  userUpdateValidation(),
+  validate,
+  imageUpload.single("profileImage"),
+  update
 );
-router.get("/:id", getUserById)
+router.get("/:id", getUserById);
+router.get("/", getUsers);
 
 module.exports = router;
