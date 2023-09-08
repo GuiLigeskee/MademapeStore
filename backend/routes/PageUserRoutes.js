@@ -6,7 +6,7 @@ const getUserById = require("../controllers/UserController");
 const getUserButtons = require("../controllers/ButtonsController");
 
 // Middlewares
-const {imageUpload} = require("../middlewares/imageUpload");
+const { imageUpload } = require("../middlewares/imageUpload");
 
 // Routes
 router.get("/buttons/:id", getUserButtons);
