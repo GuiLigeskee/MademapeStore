@@ -139,7 +139,7 @@ const getUserById = async (req, res) => {
   res.status(200).json(user);
 };
 
-// Get user by id
+// Get all users
 const getUsers = async (req, res) => {
   const users = await User.find({}, "_id name email");
 
