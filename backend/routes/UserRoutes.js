@@ -8,10 +8,10 @@ const {
   login,
   update,
   getUserById,
+  getUsers,
 } = require("../controllers/UserController");
 
 // Middlewares
-const adminAuth = require("../middlewares/adminAuth");
 const validate = require("../middlewares/handleValidation");
 const {
   userCreateValidation,
@@ -23,17 +23,17 @@ const { imageUpload } = require("../middlewares/imageUpload");
 
 // routes
 router.post("/register", userCreateValidation(), validate, register);
-router.get("/profile", authGuard, adminAuth, getCurrentUser);
+router.get("/profile", authGuard, getCurrentUser);
 router.post("/login", loginValidation(), validate, login);
 router.put(
   "/update",
-  authGuard,
-  adminAuth,
+  authGuard, // somente user
   userUpdateValidation(),
   validate,
   imageUpload.single("profileImage"),
   update
 );
-router.get("/:id", adminAuth, getUserById);
+router.get("/:id", authGuard, getUserById);
+router.get("/", getUsers);
 
 module.exports = router;

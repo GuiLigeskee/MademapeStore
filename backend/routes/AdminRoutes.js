@@ -8,9 +8,6 @@ const {
   adminRegister,
 } = require("../controllers/AdminController");
 
-// Middlewares
-const authGuard = require("../middlewares/authGuard");
-
 // routes
 router.get("/users", listUsers);
 router.post("/login", adminLogin);

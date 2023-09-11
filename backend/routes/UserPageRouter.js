@@ -5,11 +5,8 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 const Buttons = require("../models/Buttons");
 
-// Middlewares
-const authGuard = require("../middlewares/authGuard");
-
 // Routes
-router.get("/:id", authGuard, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const userId = req.params.id; // Obtém o ID do usuário da URL
 

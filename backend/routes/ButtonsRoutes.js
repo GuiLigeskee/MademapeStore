@@ -11,7 +11,6 @@ const {
 } = require("../controllers/ButtonsController");
 
 // Middleware
-const adminAuth = require("../middlewares/adminAuth");
 const authGuard = require("../middlewares/authGuard");
 const validate = require("../middlewares/handleValidation");
 const {
@@ -20,24 +19,16 @@ const {
 } = require("../middlewares/buttonValidation");
 
 // Routes
-router.get("/:id", adminAuth, getUserButtons);
+router.get("/:id", authGuard, getUserButtons);
 router.post(
-  "/",
+  "/insert/:userId",
   authGuard,
-  adminAuth,
   buttonInsertValidation(),
   validate,
   insertButton
 );
-router.delete("/:id", authGuard, adminAuth, deleteButton);
-router.put(
-  "/:id",
-  authGuard,
-  adminAuth,
-  buttonUpdateValidation(),
-  validate,
-  updateButton
-);
+router.delete("/:id", authGuard, deleteButton);
+router.put("/:id", authGuard, buttonUpdateValidation(), validate, updateButton);
 router.put("/clicks/:id", authGuard, counterClicks);
 
 module.exports = router;

@@ -6,13 +6,18 @@ const mongoose = require("mongoose");
 const insertButton = async (req, res) => {
   const { title, colorTitle, backgroundColor, format, icon, url, clicks } =
     req.body;
+  const userId = req.params.userId; // Obtém o ID do usuário da rota
 
-  const reqUser = req.user;
-  const user = await User.findById(reqUser._id);
+  // Encontrar o usuário para o qual o botão deve ser inserido
+  const user = await User.findById(userId);
 
-  console.log(user.name);
+  if (!user) {
+    return res.status(404).json({ error: "Usuário não encontrado." });
+  }
 
-  // create button
+  console.log(`Inserindo botão para o usuário: ${user.name}`);
+
+  // Criar o botão
   const newButton = await Buttons.create({
     title,
     colorTitle,
@@ -25,16 +30,11 @@ const insertButton = async (req, res) => {
     userName: user.name,
   });
 
-  // If user was photo sucessfully, return data.
-  if (!newButton) {
-    res.status(422).json({
-      errors: ["Houve um erro, por favor tente novamente mais tarde."],
-    });
-    return;
-  }
-
+  // Retornar a resposta de sucesso
   res.status(201).json(newButton);
 };
+
+module.exports = insertButton;
 
 // Remove a Button from the DB
 const deleteButton = async (req, res) => {
@@ -49,14 +49,6 @@ const deleteButton = async (req, res) => {
     res.status(422).json({ errors: "Botão não encontrado" });
     return;
   }
-
-  // // check if photo belongs to user
-  // if (!deleteButton.userId.equals(reqUser._id)) {
-  //   res
-  //     .status(422)
-  //     .json({ errors: "Ocorreu um erro, tente novamente mais tarde." });
-  //   return;
-  // }
 
   await Buttons.findByIdAndDelete(button._id);
 
@@ -107,13 +99,13 @@ const updateButton = async (req, res) => {
     return;
   }
 
-  // check if button belongs to user
-  if (!button.userId.equals(reqUser._id)) {
-    res
-      .status(422)
-      .json({ errors: ["Ocorreu um erro, tente novamente mais tarde"] });
-    return;
-  }
+  // // check if button belongs to user
+  // if (!button.userId.equals(reqUser._id)) {
+  //   res
+  //     .status(422)
+  //     .json({ errors: ["Ocorreu um erro, tente novamente mais tarde"] });
+  //   return;
+  // }
 
   if (title) {
     button.title = title;
