@@ -22,3 +22,89 @@ ul {
 button {
   font-family: "Quicksand", sans-serif;
 }
+
+.active {
+  font-weight: bold;
+  color: #ee7410;
+}
+
+ul {
+  list-style: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label span {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  color: #ee7410;
+  font-size: 0.8em;
+}
+
+input {
+  background-color: #363636;
+  color: #aaa;
+  border: 2px solid #0000;
+  border-radius: 10px;
+  padding: 10px 8px;
+  outline: none;
+  margin-bottom: 0.6em;
+  padding: 1em;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* .btn, button, input[type="submit"] {
+  color: #000000;
+  background-color: #45c950;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 1em;
+  padding: 0.5em;
+  cursor: pointer;
+} */
+
+.btn,
+button,
+input[type="submit"] {
+  color: #fafafa;
+  background-color: #ee7410;
+  border: 2px solid black;
+  padding: 1em;
+  font-weight: bold;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  margin-top: 1em;
+}
+
+input:disabled {
+  cursor: not-allowed;
+  background-color: #121212;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  opacity: 1;
+}
+
+.hide {
+  display: none;
+}
