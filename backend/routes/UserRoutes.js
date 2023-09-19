@@ -26,7 +26,7 @@ router.post("/register", userCreateValidation(), validate, register);
 router.get("/profile", authGuard, getCurrentUser);
 router.post("/login", loginValidation(), validate, login);
 router.put(
-  "/update",
+  "/",
   authGuard, // somente user
   userUpdateValidation(),
   validate,

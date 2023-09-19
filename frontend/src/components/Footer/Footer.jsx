@@ -1,12 +1,11 @@
 import React from "react";
 import "./Footer.css";
+import MadeLinkLogo from "../../assets/MadeLink.svg";
 
 const Footer = () => {
   return (
     <div className="footer">
-      <p>
-        MADEMAPE <span>store</span>
-      </p>
+      {/* <img src={MadeLinkLogo} alt="MadeLink" /> */}
     </div>
   );
 };
