@@ -1,5 +1,6 @@
 import React from "react";
 import "./Auth.css";
+import MadeLinkLogo from "../../assets/MadeLink.jpeg";
 
 // Components
 import { Link, useNavigate } from "react-router-dom";
@@ -47,9 +48,9 @@ const Register = () => {
 
   return (
     <div id="register">
-      <h2>
-        <span>Mademape </span>store
-      </h2>
+      <p>
+        <img src={MadeLinkLogo} alt="Made Link" id="logo" />
+      </p>
       <p className="subtitle">Cadastre-se para fazer parte da comunidade.</p>
       <form onSubmit={handleSubmit}>
         <input

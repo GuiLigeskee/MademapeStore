@@ -42,3 +42,8 @@
 span {
   color: #ee7410;
 }
+
+#logo {
+  text-align: center;
+  height: 10em;
+}

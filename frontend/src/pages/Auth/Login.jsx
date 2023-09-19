@@ -4,6 +4,7 @@ import "./Auth.css";
 // Components
 import { Link, useNavigate } from "react-router-dom";
 import Message from "../../components/Messages/Message";
+import MadeLinkLogo from "../../assets/MadeLink.jpeg";
 
 // Hooks
 import { useEffect, useState } from "react";
@@ -45,9 +46,9 @@ const Login = () => {
 
   return (
     <div id="login">
-      <h2>
-        <span>Mademape </span>store
-      </h2>
+      <p>
+        <img src={MadeLinkLogo} alt="Made Link" id="logo" />
+      </p>
       <p className="subtitle">Faça o login para voltar a participar.</p>
       <form onSubmit={handleSubmit}>
         <input
