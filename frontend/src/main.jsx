@@ -19,6 +19,7 @@ import Home from "./pages/Home/Home.jsx";
 import Register from "./pages/Auth/Register.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Profile from "./pages/EditProfile/EditProfile.jsx";
+import EditPage from "./pages/EditPage/EditPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/edit-page",
+        element: <EditPage />,
       },
     ],
   },

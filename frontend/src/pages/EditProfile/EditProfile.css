@@ -14,9 +14,34 @@
 .profile-image {
   border: 3px solid #ee7410;
   border-radius: 50%;
-  margin: 2em 0;
+  margin: 2em 0 1em 0;
   width: 150px;
   height: 150px;
   object-fit: cover;
   object-position: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#foto-perfil {
+  display: block;
+  padding: 1em 0.5em;
+  background-color: #ee7410;
+  border-radius: 10px;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+#foto-perfil span {
+  color: #000000;
+  padding: 0.2em 0.1em;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+#titulo {
+  color: #ee7410;
 }

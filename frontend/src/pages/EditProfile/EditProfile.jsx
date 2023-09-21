@@ -76,7 +76,7 @@ const Profile = () => {
 
   return (
     <div id="edit-profile">
-      <h2>Configurações</h2>
+      <h2 id="titulo">Configurações</h2>
       {(user.profileImage || previewImage) && (
         <img
           className="profile-image"
@@ -89,10 +89,16 @@ const Profile = () => {
         />
       )}
       <form onSubmit={handleSubmit}>
-        <label>
-          <span>Imagem de Perfil:</span>
-          <input type="file" onChange={handleFile} />
+        <label htmlFor="arquivo" id="foto-perfil">
+          <span>Carregar imagem de perfil</span>
+          <input
+            type="file"
+            onChange={handleFile}
+            name="arquivo"
+            id="arquivo"
+          />
         </label>
+        <br />
         <label>
           <span>Alterar nome:</span>
           <input
@@ -112,7 +118,7 @@ const Profile = () => {
             value={password || ""}
           />
         </label>
-        {!loading && <input type="submit" value="Atualizar" />}
+        {!loading && <input type="submit" value="Salvar" />}
         {loading && <input type="submit" disabled value="Aguarde..." />}
         {error && <Message msg={error} type="error" />}
         {message && <Message msg={message} type="success" />}

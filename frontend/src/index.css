@@ -65,7 +65,9 @@ input::placeholder {
   color: #aaa;
 }
 
-/* .btn, button, input[type="submit"] {
+/* .btn,
+button,
+input[type="submit"] {
   color: #000000;
   background-color: #45c950;
   border: 2px solid black;
@@ -78,7 +80,7 @@ input::placeholder {
 .btn,
 button,
 input[type="submit"] {
-  color: #fafafa;
+  color: #000000;
   background-color: #ee7410;
   border: 2px solid black;
   padding: 1em;
@@ -107,4 +109,13 @@ input[type="submit"]:hover {
 
 .hide {
   display: none;
+}
+
+input [type="color"] {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
