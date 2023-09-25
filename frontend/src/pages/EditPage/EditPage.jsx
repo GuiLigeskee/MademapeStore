@@ -1,101 +1,43 @@
-import React, { useState } from "react";
+import "./EditPage.css";
 
 const EditPage = () => {
-  const [titleColor, setTitleColor] = useState("#000000"); // Cor inicial do título
-  const [backgroundImage, setBackgroundImage] = useState(null);
-  const [buttons, setButtons] = useState([
-    { text: "", url: "" }, // Botão inicial
-  ]);
-
-  const handleTitleColorChange = (e) => {
-    setTitleColor(e.target.value);
-  };
-
-  const handleBackgroundImageChange = (e) => {
-    const file = e.target.files[0];
-    setBackgroundImage(file);
-  };
-
-  const handleAddButton = () => {
-    setButtons([...buttons, { text: "", url: "" }]);
-  };
-
-  const handleButtonTextChange = (text, index) => {
-    const updatedButtons = [...buttons];
-    updatedButtons[index].text = text;
-    setButtons(updatedButtons);
-  };
-
-  const handleButtonUrlChange = (url, index) => {
-    const updatedButtons = [...buttons];
-    updatedButtons[index].url = url;
-    setButtons(updatedButtons);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Aqui você pode enviar os dados do formulário para onde quiser, por exemplo, uma função que atualiza a página.
-    // Você pode usar titleColor, backgroundImage e buttons para enviar os dados do formulário.
-
-    console.log("Dados do formulário:", {
-      titleColor,
-      backgroundImage,
-      buttons,
-    });
-  };
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
-    <div id="edit-page">
-      <h2>Editar Página</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>Cor do Título:</span>
-          <input
-            type="color"
-            value={titleColor}
-            onChange={handleTitleColorChange}
-            className="custom-color-input"
-          />
+    <div className="edit-page">
+      <h2 id="titulo">Editar Página</h2>
+      <form /*onSubmit={handleSubmit}*/>
+        <label htmlFor="text-color" id="text-color">
+          <span>Escolher cor do nome da página</span>
+          <input type="color" name="text-color" id="text-color" />
         </label>
         <br />
-        <label>
-          <span>Foto de Plano de Fundo:</span>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleBackgroundImageChange}
-          />
+        <label htmlFor="background-image" id="button-background">
+          <span>Carregue um plano de fundo para seu card</span>
+          <input type="file" name="background-image" id="background-image" />
         </label>
-        <br />
-        <h3>Botões</h3>
-        {buttons.map((button, index) => (
-          <div key={index}>
-            <label>
-              <span>Texto do Botão:</span>
-              <input
-                type="text"
-                value={button.text}
-                onChange={(e) => handleButtonTextChange(e.target.value, index)}
-              />
-            </label>
-            <br />
-            <label>
-              <span>Link do Botão:</span>
-              <input
-                type="url"
-                value={button.url}
-                onChange={(e) => handleButtonUrlChange(e.target.value, index)}
-              />
-            </label>
-            <br />
-          </div>
-        ))}
-        <button type="button" onClick={handleAddButton}>
-          Adicionar Botão
-        </button>
-        <br />
-        <button type="submit">Salvar</button>
+        <input type="submit" value="Salvar" />
+      </form>
+      <h2 id="titulo">Adicionar botões</h2>
+      <form /*onSubmit={handleButton}*/>
+        <label>
+          <span>Botão 1:</span>
+          <input
+            type="text"
+            name="name-button"
+            id="name-button"
+            placeholder="Nome do botão"
+          />
+          <input
+            type="url"
+            name="url-button"
+            id="url-button"
+            placeholder="URL"
+          />
+          <button>Editar estilo</button>
+        </label>
       </form>
     </div>
   );

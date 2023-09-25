@@ -50,7 +50,7 @@ label span {
   font-size: 0.8em;
 }
 
-input {
+input:not([type="color"]) {
   background-color: #363636;
   color: #aaa;
   border: 2px solid #0000;
@@ -69,7 +69,7 @@ input::placeholder {
 button,
 input[type="submit"] {
   color: #000000;
-  background-color: #45c950;
+  background-color: #ee7410;
   border: 2px solid black;
   border-radius: 10px;
   font-size: 1em;
@@ -85,8 +85,10 @@ input[type="submit"] {
   border: 2px solid black;
   padding: 1em;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1em;
   cursor: pointer;
+  width: 8em;
+  margin: 2em auto;
 }
 
 input[type="submit"] {
@@ -109,13 +111,4 @@ input[type="submit"]:hover {
 
 .hide {
   display: none;
-}
-
-input [type="color"] {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
 }
