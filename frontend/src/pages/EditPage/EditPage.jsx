@@ -1,6 +1,23 @@
 import "./EditPage.css";
 
+import { uploads } from "../../utils/config";
+
+//Hooks
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+// import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+
+// Redux
+import { fetchUserPage, updateUserPage } from "../../Slices/userPageSlice";
+
+// Components
+import Message from "../../components/Messages/Message";
+
 const EditPage = () => {
+  const dispatch = useDispatch();
+
+  const { user, message, error, loading } = useSelector((state) => state.user);
+
   // handleSubmit = (e) => {
   //   e.preventDefault();
   // };
@@ -20,25 +37,8 @@ const EditPage = () => {
         </label>
         <input type="submit" value="Salvar" />
       </form>
-      <h2 id="titulo">Adicionar botões</h2>
-      <form /*onSubmit={handleButton}*/>
-        <label>
-          <span>Botão 1:</span>
-          <input
-            type="text"
-            name="name-button"
-            id="name-button"
-            placeholder="Nome do botão"
-          />
-          <input
-            type="url"
-            name="url-button"
-            id="url-button"
-            placeholder="URL"
-          />
-          <button>Editar estilo</button>
-        </label>
-      </form>
+      <h2 id="titulo">Crie seus botões</h2>
+      <button>Clique aqui para criar um botão</button>
     </div>
   );
 };

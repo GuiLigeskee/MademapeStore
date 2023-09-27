@@ -4,6 +4,6 @@ const router = express();
 router.use("/api/admin", require("./AdminRoutes"));
 router.use("/api/users", require("./UserRoutes"));
 router.use("/api/button", require("./ButtonsRoutes"));
-router.use("/api/page", require("./UserPageRouter"));
+// router.use("/api/page", require("./UserPageRouter"));
 
 module.exports = router;

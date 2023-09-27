@@ -9,6 +9,7 @@ const {
   update,
   getUserById,
   getUsers,
+  userPage,
 } = require("../controllers/UserController");
 
 // Middlewares
@@ -35,5 +36,12 @@ router.put(
 );
 router.get("/:id", authGuard, getUserById);
 router.get("/", getUsers);
+router.put(
+  "/userpage/:id",
+  authGuard,
+  validate,
+  // imageUpload.single("backgroundImage"),
+  userPage
+);
 
 module.exports = router;

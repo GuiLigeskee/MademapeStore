@@ -152,6 +152,33 @@ const getUsers = async (req, res) => {
   res.status(200).json(users);
 };
 
+// User page update
+const userPage = async (req, res) => {
+  const { nameColor, backgroundImage } = req.body;
+
+  if (req.file) {
+    backgroundImage = req.file.filename;
+  }
+
+  const reqUser = req.user;
+
+  const user = await User.findById(
+    new mongoose.Types.ObjectId(reqUser._id)
+  ).select("-password");
+
+  if (backgroundImage) {
+    user.backgroundImage = backgroundImage;
+  }
+
+  if (nameColor) {
+    user.nameColor = nameColor;
+  }
+
+  await user.save();
+
+  res.status(200).json(user);
+};
+
 module.exports = {
   register,
   getCurrentUser,
@@ -159,4 +186,5 @@ module.exports = {
   update,
   getUserById,
   getUsers,
+  userPage,
 };

@@ -18,10 +18,10 @@ a {
 ul {
   list-style: none;
 }
-
+/* 
 button {
   font-family: "Quicksand", sans-serif;
-}
+} */
 
 .active {
   font-weight: bold;
@@ -47,7 +47,7 @@ label span {
   font-weight: 600;
   margin-bottom: 0.5em;
   color: #ee7410;
-  font-size: 0.8em;
+  font-size: 1.2em;
 }
 
 input:not([type="color"]) {
@@ -83,12 +83,13 @@ input[type="submit"] {
   color: #000000;
   background-color: #ee7410;
   border: 2px solid black;
+  border-radius: 10px;
   padding: 1em;
   font-weight: bold;
   font-size: 1em;
   cursor: pointer;
-  width: 8em;
-  margin: 2em auto;
+  width: 100%;
+  margin: 0.5em auto;
 }
 
 input[type="submit"] {
