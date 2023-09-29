@@ -21,6 +21,7 @@ const {
 } = require("../middlewares/userValidation");
 const authGuard = require("../middlewares/authGuard");
 const { imageUpload } = require("../middlewares/imageUpload");
+const { backgroundImageUpload } = require("../middlewares/imgBackgroundUpload");
 
 // routes
 router.post("/register", userCreateValidation(), validate, register);
@@ -37,10 +38,10 @@ router.put(
 router.get("/:id", authGuard, getUserById);
 router.get("/", getUsers);
 router.put(
-  "/userpage/:id",
+  "/userpage",
   authGuard,
   validate,
-  // imageUpload.single("backgroundImage"),
+  imageUpload.single("backgroundImage"),
   userPage
 );
 

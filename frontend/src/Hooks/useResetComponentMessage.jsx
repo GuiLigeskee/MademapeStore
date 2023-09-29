@@ -1,5 +1,5 @@
 // redux
-// import { resetMessage } from "../slices/photoSlice";
+import { resetMessage } from "../Slices/userSlice";
 
 export const useResetComponentMessage = (dispatch) => {
   return () => {

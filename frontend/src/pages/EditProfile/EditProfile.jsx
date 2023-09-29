@@ -5,7 +5,7 @@ import { uploads } from "../../utils/config";
 // Hooks
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
 
 // Redux
 import { profile, updateProfile } from "../../Slices/userSlice";
@@ -16,7 +16,7 @@ import Message from "../../components/Messages/Message";
 const Profile = () => {
   const dispatch = useDispatch();
 
-  //   const resetMessage = useResetComponentMessage(dispatch);
+  const resetMessage = useResetComponentMessage(dispatch);
 
   const { user, message, error, loading } = useSelector((state) => state.user);
 
