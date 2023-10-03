@@ -8,9 +8,10 @@ const imageStorage = multer.diskStorage({
 
     if (req.baseUrl.includes("users")) {
       folder = "users";
-    } else if (req.baseUrl.includes("backgroundImage")) {
-      folder = "backgroundImage";
     }
+    // else if (req.baseUrl.includes("backgroundImage")) {
+    //   folder = "backgroundImage";
+    // }
     cb(null, `uploads/${folder}/`);
   },
   filename: (req, file, cb) => {

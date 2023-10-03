@@ -48,7 +48,7 @@ const getUserDetails = async (id) => {
 const updateUserPage = async (data, token) => {
   const config = requestConfig("PUT", data, token, true);
   try {
-    const res = await fetch(api + "/users/", config)
+    const res = await fetch(api + "/users/userpage", config)
       .then((res) => res.json())
       .catch((err) => err);
 

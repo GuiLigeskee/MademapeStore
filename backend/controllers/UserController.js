@@ -154,7 +154,9 @@ const getUsers = async (req, res) => {
 
 // User page update
 const userPage = async (req, res) => {
-  const { nameColor, backgroundImage } = req.body;
+  const { name, nameColor } = req.body;
+
+  let backgroundImage = null;
 
   if (req.file) {
     backgroundImage = req.file.filename;
@@ -165,6 +167,10 @@ const userPage = async (req, res) => {
   const user = await User.findById(
     new mongoose.Types.ObjectId(reqUser._id)
   ).select("-password");
+
+  if (name) {
+    user.name = name;
+  }
 
   if (backgroundImage) {
     user.backgroundImage = backgroundImage;
@@ -177,6 +183,30 @@ const userPage = async (req, res) => {
   await user.save();
 
   res.status(200).json(user);
+
+  // const { nameColor, backgroundImage } = req.body;
+
+  // if (req.file) {
+  //   backgroundImage = req.file.filename;
+  // }
+
+  // const reqUser = req.user;
+
+  // const user = await User.findById(
+  //   new mongoose.Types.ObjectId(reqUser._id)
+  // ).select("-password");
+
+  // if (backgroundImage) {
+  //   user.backgroundImage = backgroundImage;
+  // }
+
+  // if (nameColor) {
+  //   user.nameColor = nameColor;
+  // }
+
+  // await user.save();
+
+  // res.status(200).json(user);
 };
 
 module.exports = {
