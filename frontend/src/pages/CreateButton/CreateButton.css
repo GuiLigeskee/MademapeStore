@@ -1,0 +1,85 @@
+.create-button {
+  border: 3px solid #363636;
+  background-color: #000;
+  padding: 1.5em 2em;
+  max-width: 100%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+#titulo {
+  margin: 1em 0;
+}
+
+icon-carousel {
+  display: flex;
+  overflow: hidden;
+  width: 300px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* Estilos gerais para o carrossel */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.carousel button {
+  background-color: #363636;
+  color: #ee7410;
+  border: 1px solid #363636;
+  padding: 1em;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto;
+  border-radius: 50%;
+}
+
+.carousel button:hover {
+  background-color: #555;
+}
+
+.carousel img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #333;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  background-color: #e0dbd3;
+  padding: 1em;
+  border-radius: 10%;
+}
+
+/* Estilos para a legenda da imagem (opcional) */
+.carousel .image-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+/* Estilos para os botões Anterior e Próxima (opcional) */
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel button:first-child {
+  left: 1px;
+}
+
+.carousel button:last-child {
+  right: 1px;
+}

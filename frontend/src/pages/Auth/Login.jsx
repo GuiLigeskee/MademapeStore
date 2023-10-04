@@ -31,7 +31,7 @@ const Login = () => {
       password,
     };
 
-    navigate("/");
+    navigate("/profile");
     dispatch(login(user));
   };
 

@@ -20,6 +20,7 @@ import Register from "./pages/Auth/Register.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import Profile from "./pages/EditProfile/EditProfile.jsx";
 import EditPage from "./pages/EditPage/EditPage.jsx";
+import CreateButton from "./pages/CreateButton/CreateButton.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/edit-page",
         element: <EditPage />,
+      },
+      {
+        path: "create-button",
+        element: <CreateButton />,
       },
     ],
   },

@@ -1,10 +1,20 @@
+// CSS
+import "./EditPage.css";
+
+// Hooks
 import React, { useEffect, useState } from "react";
-import { uploads } from "../../utils/config";
 import { useSelector, useDispatch } from "react-redux";
 import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
-import { profile, updateUserPage } from "../../Slices/userSlice";
+
+// Compoments
 import Message from "../../components/Messages/Message";
-import "./EditPage.css";
+import { Link, useNavigate } from "react-router-dom";
+
+// Redux
+import { profile, updateUserPage } from "../../Slices/userSlice";
+
+// uploads
+import { uploads } from "../../utils/config";
 
 const EditPage = () => {
   const dispatch = useDispatch();
@@ -27,14 +37,13 @@ const EditPage = () => {
   // fill user form
   useEffect(() => {
     if (user) {
-      setName(user.nameColor);
+      setNameColor(user.nameColor);
     }
   }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Certifique-se de que 'name' não seja 'undefined' antes de incluí-lo nos dados do usuário
     const userData = {};
     if (name) {
       userData.name = name;
@@ -106,7 +115,9 @@ const EditPage = () => {
         {message && <Message msg={message} type="success" />}
       </form>
       <h2 id="titulo">Crie seus botões</h2>
-      <button>Clique aqui para criar um botão</button>
+      <Link to="/create-button">
+        <button>Clique aqui para criar um botão</button>
+      </Link>
     </div>
   );
 };
