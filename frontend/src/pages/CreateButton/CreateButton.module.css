@@ -9,14 +9,10 @@
 
 #titulo {
   margin: 1em 0;
+  color: #d67f0c;
 }
-
-icon-carousel {
-  display: flex;
-  overflow: hidden;
-  width: 300px;
-  justify-content: space-between;
-  margin-bottom: 20px;
+label p {
+  color: #e0dbd3;
 }
 
 /* Estilos gerais para o carrossel */
@@ -24,15 +20,14 @@ icon-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   max-width: 300px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0.5em;
 }
 
 .carousel button {
   background-color: #363636;
-  color: #ee7410;
+  color: #d67f0c;
   border: 1px solid #363636;
   padding: 1em;
   font-size: 18px;
@@ -56,30 +51,46 @@ icon-carousel {
   border-radius: 10%;
 }
 
-/* Estilos para a legenda da imagem (opcional) */
-.carousel .image-caption {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
+/* Carrossel de formatos de botão */
+
+.button-shape-toggle {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
   color: #fff;
-  padding: 5px 0;
+  text-align: center;
+  margin: 0 10px;
+}
+
+#shape-long-circle {
+  width: 250px;
+  height: 50px;
+  background-color: #000000;
+  border-radius: 25px;
+}
+
+#shape-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #000000;
+  border-radius: 50%;
+}
+
+.button-shape-option {
+  background-color: #e0dbd3;
+  color: #d67f0c;
+  border: 5px solid #000000;
+  border-radius: 15px;
+  padding: 10px 20px;
   font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+  width: auto;
 }
 
-/* Estilos para os botões Anterior e Próxima (opcional) */
-.carousel button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.carousel button:first-child {
-  left: 1px;
-}
-
-.carousel button:last-child {
-  right: 1px;
+.button-shape-option.selected {
+  border: 5px solid #d67f0c;
 }
