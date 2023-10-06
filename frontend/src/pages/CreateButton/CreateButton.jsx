@@ -2,9 +2,12 @@
 import styles from "./CreateButton.module.css";
 
 // Hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+// import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+
+// Redux
+import { createButton, resetMessage } from "../../Slices/ButtonSlice";
 
 // Compoments
 import Message from "../../components/Messages/Message";
@@ -24,15 +27,17 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const CreateButton = () => {
   const dispatch = useDispatch();
-  // States
-  const [title, setTitle] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [buttonShape, setButtonShape] = useState("");
-  const [selectedButton, setSelectedButton] = useState("");
-  const [buttonColor, setButtonColor] = useState("#ffffff" || "#rrggbb");
-  const [titleColor, setTitleColor] = useState("#000000" || "#rrggbb");
-
+  // const resetMessage = useResetComponentMessage(dispatch);
   const { loading, error } = useSelector((state) => state.auth);
+
+  // States
+  const [title, setName] = useState("");
+  const [url, setUrl] = useState("");
+  const [icon, setCurrentIndex] = useState(0);
+  const [buttonShape, setButtonShape] = useState("");
+  const [format, setSelectedButton] = useState("");
+  const [backgroundColor, setButtonColor] = useState("#ffffff" || "#rrggbb");
+  const [colorTitle, setTitleColor] = useState("#000000" || "#rrggbb");
 
   // Imagens dos ícones
   const images = [
@@ -61,7 +66,7 @@ const CreateButton = () => {
     );
   };
 
-  // Carrossel de formatos
+  // formatos de botões
   const toggleButtonShape = (shape, e) => {
     e.preventDefault();
     setButtonShape(shape);
@@ -70,7 +75,7 @@ const CreateButton = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui você pode processar o que foi selecionado, por exemplo, enviar para um servidor ou atualizar o estado do componente.
+
     const button = {
       title,
       colorTitle,
@@ -80,10 +85,16 @@ const CreateButton = () => {
       url,
     };
 
-    console.log(user);
+    console.log(button);
 
-    dispatch(register(user));
+    dispatch(createButton());
+    // resetMessage();
   };
+
+  // clean all auth states
+  useEffect(() => {
+    dispatch(resetMessage());
+  }, [dispatch]);
 
   return (
     <div className={styles["create-button"]}>
@@ -93,13 +104,23 @@ const CreateButton = () => {
           <span>
             Passo 1: <p>digite o nome do botão.</p>
           </span>
-          <input type="text" placeholder="Nome do botão" />
+          <input
+            type="text"
+            placeholder="Nome do botão"
+            onChange={(e) => setName(e.target.value)}
+            value={title}
+          />
         </label>
         <label>
           <span>
             Passo 2: <p>cole a URL desejada.</p>
           </span>
-          <input type="url" placeholder="URL" />
+          <input
+            type="url"
+            placeholder="URL"
+            onChange={(e) => setUrl(e.target.value)}
+            value={url}
+          />
         </label>
         <label>
           <span>
@@ -112,10 +133,7 @@ const CreateButton = () => {
             >
               <FontAwesomeIcon icon={faArrowLeft} />
             </button>
-            <img
-              src={images[currentIndex]}
-              alt={`Imagem ${currentIndex + 1}`}
-            />
+            <img src={images[icon]} alt={`Imagem ${icon + 1}`} />
             <button className={styles["carousel-button"]} onClick={goToNext}>
               <FontAwesomeIcon icon={faArrowRight} />
             </button>
@@ -130,7 +148,7 @@ const CreateButton = () => {
               type="button"
               onClick={(e) => toggleButtonShape("circle", e)}
               className={`${styles["button-shape-option"]} ${
-                selectedButton === "circle" ? styles["selected"] : ""
+                format === "circle" ? styles["selected"] : ""
               }`}
             >
               <div id={styles["shape-circle"]}></div>
@@ -139,7 +157,7 @@ const CreateButton = () => {
               type="button"
               onClick={(e) => toggleButtonShape("square", e)}
               className={`${styles["button-shape-option"]} ${
-                selectedButton === "square" ? styles["selected"] : ""
+                format === "square" ? styles["selected"] : ""
               }`}
             >
               <div id={styles["shape-long-circle"]}></div>
@@ -155,7 +173,7 @@ const CreateButton = () => {
             name="button-color"
             id="button-color"
             onChange={(e) => setButtonColor(e.target.value)}
-            value={buttonColor || ""}
+            value={backgroundColor || ""}
           />
         </label>
         <label htmlFor="title-color" id="title-color">
@@ -167,7 +185,7 @@ const CreateButton = () => {
             name="title-color"
             id="title-color"
             onChange={(e) => setTitleColor(e.target.value)}
-            value={titleColor || ""}
+            value={colorTitle || ""}
           />
         </label>
         {!loading && <input type="submit" value="Criar botão" />}

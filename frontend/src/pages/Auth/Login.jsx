@@ -40,10 +40,6 @@ const Login = () => {
     dispatch(reset());
   }, [dispatch]);
 
-  // useEffect(()=>{
-  //   dispatch(reset());
-  // }, dispatch);
-
   return (
     <div id="login">
       <p>

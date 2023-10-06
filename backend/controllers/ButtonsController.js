@@ -6,10 +6,8 @@ const mongoose = require("mongoose");
 const insertButton = async (req, res) => {
   const { title, colorTitle, backgroundColor, format, icon, url, clicks } =
     req.body;
-  const userId = req.params.userId; // Obtém o ID do usuário da rota
-
-  // Encontrar o usuário para o qual o botão deve ser inserido
-  const user = await User.findById(userId);
+  const reqUser = req.user;
+  const user = await User.findById(reqUser._id);
 
   if (!user) {
     return res.status(404).json({ error: "Usuário não encontrado." });
@@ -33,8 +31,6 @@ const insertButton = async (req, res) => {
   // Retornar a resposta de sucesso
   res.status(201).json(newButton);
 };
-
-module.exports = insertButton;
 
 // Remove a Button from the DB
 const deleteButton = async (req, res) => {
