@@ -4,7 +4,7 @@ import styles from "./CreateButton.module.css";
 // Hooks
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
 
 // Redux
 import { createButton, resetMessage } from "../../Slices/ButtonSlice";
@@ -28,16 +28,19 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const CreateButton = () => {
   const dispatch = useDispatch();
   // const resetMessage = useResetComponentMessage(dispatch);
-  const { loading, error } = useSelector((state) => state.auth);
+  const { message, loading, error } = useSelector((state) => state.auth);
+  const userToken = useSelector((state) => state.auth.user.token);
 
   // States
-  const [title, setName] = useState("");
+  const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
-  const [icon, setCurrentIndex] = useState(0);
+  const [icon, setIcon] = useState(0);
   const [buttonShape, setButtonShape] = useState("");
-  const [format, setSelectedButton] = useState("");
-  const [backgroundColor, setButtonColor] = useState("#ffffff" || "#rrggbb");
-  const [colorTitle, setTitleColor] = useState("#000000" || "#rrggbb");
+  const [format, setFormat] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState(
+    "#ffffff" || "#rrggbb"
+  );
+  const [colorTitle, setColorTitle] = useState("#000000" || "#rrggbb");
 
   // Imagens dos ícones
   const images = [
@@ -54,14 +57,14 @@ const CreateButton = () => {
   // Carrossel de icones
   const goToPrevious = (e) => {
     e.preventDefault();
-    setCurrentIndex((prevIndex) =>
+    setIcon((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
   const goToNext = (e) => {
     e.preventDefault();
-    setCurrentIndex((prevIndex) =>
+    setIcon((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
@@ -70,11 +73,14 @@ const CreateButton = () => {
   const toggleButtonShape = (shape, e) => {
     e.preventDefault();
     setButtonShape(shape);
-    setSelectedButton(shape); // Defina o botão selecionado ao clicar
+    setFormat(shape); // Defina o botão selecionado ao clicar
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    console.log("Title:", title);
+    console.log("URL:", url);
 
     const button = {
       title,
@@ -85,15 +91,25 @@ const CreateButton = () => {
       url,
     };
 
-    console.log(button);
+    // const formData = new FormData();
 
-    dispatch(createButton());
-    // resetMessage();
+    // formData.append("title", title);
+    // formData.append("colorTitle", colorTitle);
+    // formData.append("backgroundColor", backgroundColor);
+    // formData.append("format", format);
+    // formData.append("icon", icon);
+    // formData.append("url", url);
+    // formData.append("token", userToken);
+
+    // console.log("Form Data:", formData);
+
+    dispatch(createButton(button));
+
+    resetMessage();
   };
 
-  // clean all auth states
   useEffect(() => {
-    dispatch(resetMessage());
+    dispatch(createButton());
   }, [dispatch]);
 
   return (
@@ -107,8 +123,9 @@ const CreateButton = () => {
           <input
             type="text"
             placeholder="Nome do botão"
-            onChange={(e) => setName(e.target.value)}
-            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            value={title || ""}
+            required
           />
         </label>
         <label>
@@ -119,7 +136,8 @@ const CreateButton = () => {
             type="url"
             placeholder="URL"
             onChange={(e) => setUrl(e.target.value)}
-            value={url}
+            value={url || ""}
+            required
           />
         </label>
         <label>
@@ -172,7 +190,7 @@ const CreateButton = () => {
             type="color"
             name="button-color"
             id="button-color"
-            onChange={(e) => setButtonColor(e.target.value)}
+            onChange={(e) => setBackgroundColor(e.target.value)}
             value={backgroundColor || ""}
           />
         </label>
@@ -184,13 +202,14 @@ const CreateButton = () => {
             type="color"
             name="title-color"
             id="title-color"
-            onChange={(e) => setTitleColor(e.target.value)}
+            onChange={(e) => setColorTitle(e.target.value)}
             value={colorTitle || ""}
           />
         </label>
         {!loading && <input type="submit" value="Criar botão" />}
-        {loading && <input type="submit" value="Aguarde..." disabled />}
+        {loading && <input type="submit" disabled value="Aguarde..." />}
         {error && <Message msg={error} type="error" />}
+        {message && <Message msg={message} type="success" />}
       </form>
     </div>
   );

@@ -10,19 +10,19 @@ const buttonInsertValidation = () => {
       .withMessage("O título deve ser uma string"),
     body("colorTitle")
       .not()
-      .equals(undefined)
+      .equals("undefined")
       .withMessage("Por favor, escolha a cor do título"),
     body("backgroundColor")
       .not()
-      .equals(undefined)
+      .equals("undefined")
       .withMessage("Por favor, escolha a cor do botão"),
     body("format")
       .not()
-      .equals(undefined)
+      .equals("undefined")
       .withMessage("Por favor, escolha o formato do botão"),
     body("icon")
       .not()
-      .equals(undefined)
+      .equals("undefined")
       .withMessage("Por favor, escolha um ícone para o botão"),
     body("url")
       .not()

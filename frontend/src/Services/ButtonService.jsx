@@ -1,17 +1,18 @@
 import { api, requestConfig } from "../utils/config";
 
-// Create a Button
-const createButtonService = async (data, token) => {
-  const config = requestConfig("POST", data, token, true);
+const createButtonService = async (formData, token) => {
+  const config = requestConfig("POST", formData, token);
 
   try {
-    const res = await fetch(api + "/button/create", config)
-      .then((res) => res.json())
-      .catch((err) => err);
+    const res = await fetch(api + "/button/create", config);
 
-    return res;
+    if (!res.ok) {
+      throw new Error("Erro ao criar o botão.");
+    }
+
+    return await res.json();
   } catch (error) {
-    console.log(error);
+    throw new Error("Erro ao criar o botão: " + error.message);
   }
 };
 
