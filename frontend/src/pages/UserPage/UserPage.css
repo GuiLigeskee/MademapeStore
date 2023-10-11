@@ -1,0 +1,40 @@
+.user-page {
+  padding: 1.5em 2em;
+  max-width: 100%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.button.square-button-long {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Estilos para botões circulares */
+.circle-button {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.circle-icon-background {
+  border-radius: 50%;
+}
+
+.button.circle-button img {
+  width: 7em;
+  height: 7em;
+  padding: 1em;
+}
+
+.label {
+  margin: 1em;
+  font-size: 1em;
+}

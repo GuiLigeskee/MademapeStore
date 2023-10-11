@@ -27,9 +27,8 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const CreateButton = () => {
   const dispatch = useDispatch();
-  // const resetMessage = useResetComponentMessage(dispatch);
+  const resetMessage = useResetComponentMessage(dispatch);
   const { message, loading, error } = useSelector((state) => state.auth);
-  const userToken = useSelector((state) => state.auth.user.token);
 
   // States
   const [title, setTitle] = useState("");
@@ -79,9 +78,6 @@ const CreateButton = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Title:", title);
-    console.log("URL:", url);
-
     const button = {
       title,
       colorTitle,
@@ -91,26 +87,14 @@ const CreateButton = () => {
       url,
     };
 
-    // const formData = new FormData();
-
-    // formData.append("title", title);
-    // formData.append("colorTitle", colorTitle);
-    // formData.append("backgroundColor", backgroundColor);
-    // formData.append("format", format);
-    // formData.append("icon", icon);
-    // formData.append("url", url);
-    // formData.append("token", userToken);
-
-    // console.log("Form Data:", formData);
-
     dispatch(createButton(button));
 
     resetMessage();
   };
 
-  useEffect(() => {
-    dispatch(createButton());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(createButton());
+  // }, [dispatch]);
 
   return (
     <div className={styles["create-button"]}>

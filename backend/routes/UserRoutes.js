@@ -35,7 +35,7 @@ router.put(
   imageUpload.single("profileImage"),
   update
 );
-router.get("/:id", authGuard, getUserById);
+router.get("/:id", getUserById);
 router.get("/", getUsers);
 router.put(
   "/userpage",

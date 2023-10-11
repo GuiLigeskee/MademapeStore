@@ -28,6 +28,18 @@ export const createButton = createAsyncThunk(
   }
 );
 
+// Get user buttons
+export const getUserButtons = createAsyncThunk(
+  "button/userbuttons",
+  async (id, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+
+    const data = await ButtonService.getUserButtons(id, token);
+
+    return data;
+  }
+);
+
 export const buttonSlice = createSlice({
   name: "button",
   initialState,
@@ -51,6 +63,16 @@ export const buttonSlice = createSlice({
       .addCase(createButton.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(getUserButtons.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getUserButtons.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.buttons = action.payload;
       });
   },
 });

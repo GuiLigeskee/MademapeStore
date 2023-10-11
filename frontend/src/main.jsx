@@ -21,6 +21,7 @@ import Login from "./pages/Auth/Login.jsx";
 import Profile from "./pages/EditProfile/EditProfile.jsx";
 import EditPage from "./pages/EditPage/EditPage.jsx";
 import CreateButton from "./pages/CreateButton/CreateButton.jsx";
+import UserPage from "./pages/UserPage/UserPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -48,8 +49,12 @@ const router = createBrowserRouter([
         element: <EditPage />,
       },
       {
-        path: "create-button",
+        path: "/create-button",
         element: <CreateButton />,
+      },
+      {
+        path: "/user-page/:id",
+        element: <UserPage />,
       },
     ],
   },

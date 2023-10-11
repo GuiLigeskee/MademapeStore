@@ -16,8 +16,24 @@ const createButtonService = async (formData, token) => {
   }
 };
 
+// Get user photos
+const getUserButtons = async (id, token) => {
+  const config = requestConfig("GET", null, token);
+
+  try {
+    const res = await fetch(api + "/button/user/" + id, config)
+      .then((res) => res.json())
+      .catch((err) => err);
+
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const ButtonService = {
   createButtonService,
+  getUserButtons,
 };
 
 export default ButtonService;

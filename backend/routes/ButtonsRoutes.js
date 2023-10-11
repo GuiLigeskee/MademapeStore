@@ -19,7 +19,7 @@ const {
 } = require("../middlewares/buttonValidation");
 
 // Routes
-router.get("/:userId", authGuard, getUserButtons);
+router.get("/user/:id", authGuard, getUserButtons);
 router.post(
   "/create",
   authGuard,
@@ -29,6 +29,6 @@ router.post(
 );
 router.delete("/:id", authGuard, deleteButton);
 router.put("/:id", authGuard, buttonUpdateValidation(), validate, updateButton);
-router.put("/clicks/:id", authGuard, counterClicks);
+router.put("/clicks/:id", counterClicks);
 
 module.exports = router;
