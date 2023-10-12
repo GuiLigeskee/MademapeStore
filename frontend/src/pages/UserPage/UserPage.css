@@ -1,27 +1,31 @@
 .user-page {
   padding: 1.5em 2em;
-  max-width: 100%;
-  margin: 2em auto;
   text-align: center;
+  width: 100%;
 }
 
-.button.square-button-long {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px;
-  border-radius: 5px;
+.photo-profile {
+  border-radius: 50%;
+  margin: 1em 0 0 0;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.user-name {
+  margin: 0.5em 0 1.5em 0;
 }
 
 /* Estilos para botões circulares */
 .circle-button {
   width: auto;
-  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   border-radius: 50%;
+  margin: 1.5em 0;
 }
 
 .circle-icon-background {
@@ -34,7 +38,29 @@
   padding: 1em;
 }
 
+.square-button-long {
+  max-width: 20em;
+  height: 5em;
+  display: flex; /* Define um layout flexbox para alinhar os elementos na mesma linha */
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; /* Alinhar verticalmente ao centro */
+  padding: 0.5em; /* Adicione padding para criar espaço interno */
+  border-radius: 25px;
+  margin: 1.5em auto;
+
+  /* Estilo de botão */
+  border: none; /* Remove a borda do botão */
+  cursor: pointer; /* Transforma o cursor em uma mão ao passar o mouse */
+}
+
+.square-button-long img {
+  width: 60px;
+  margin-right: 2em;
+}
+
 .label {
   margin: 1em;
-  font-size: 1em;
+  font-size: 1.2em;
+  font-weight: 600;
 }

@@ -53,23 +53,43 @@ const UserPage = () => {
     Youtube,
   ];
 
+  const userBackgroundImage = user.backgroundImage;
+
+  // Estilos para o background
+  const backgroundStyles = {
+    backgroundImage: `url(${uploads}/backgroundImage/${user.backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    backgroundPosition: "center center",
+  };
+
   // Load user data
   useEffect(() => {
     dispatch(getUserDetails(id));
     dispatch(getUserButtons(id));
   }, [dispatch, id]);
 
-  return (
-    <div className="user-page">
-      <div className="photo-profile">
+  //localhost:5173/user-page/6520706c424cfc5235ca062b
+  http: return (
+    <div className="user-page" style={backgroundStyles}>
+      <img src={user.backgroundImage} alt="" />
+      <div>
         {user.profileImage && (
-          <img src={`${uploads}/users/${user.profileImage}`} alt={user.name} />
+          <img
+            src={`${uploads}/users/${user.profileImage}`}
+            alt={user.name}
+            className="photo-profile"
+          />
         )}
       </div>
-      <h2>{user.name}</h2>
+      <h2 className="user-name" style={user.colorName}>
+        {user.name}
+      </h2>
       <div className="buttons">
         {buttons.map((button) => (
-          <div
+          <a
+            href={button.url}
             key={button._id}
             className={`button ${
               button.format === "circle" ? "circle-button" : "square-button"
@@ -94,10 +114,10 @@ const UserPage = () => {
                 }}
               >
                 <img src={images[button.icon]} alt={`Ícone ${button.icon}`} />
-                <p>{button.title}</p>
+                <p className="label">{button.title}</p>
               </div>
             )}
-          </div>
+          </a>
         ))}
       </div>
     </div>
