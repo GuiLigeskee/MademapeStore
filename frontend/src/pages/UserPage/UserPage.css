@@ -25,11 +25,14 @@
   align-items: center;
   text-align: center;
   border-radius: 50%;
-  margin: 1.5em 0;
+  margin: 0 auto 1.5em auto;
 }
 
 .circle-icon-background {
   border-radius: 50%;
+  max-width: 7em;
+  max-height: 7em;
+  margin: 0 auto;
 }
 
 .button.circle-button img {
@@ -38,29 +41,77 @@
   padding: 1em;
 }
 
-.square-button-long {
+/* .square-button-long {
   max-width: 20em;
   height: 5em;
-  display: flex; /* Define um layout flexbox para alinhar os elementos na mesma linha */
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center; /* Alinhar verticalmente ao centro */
-  padding: 0.5em; /* Adicione padding para criar espaço interno */
+  align-items: center;
+  padding: 0.5em;
   border-radius: 25px;
   margin: 1.5em auto;
-
-  /* Estilo de botão */
-  border: none; /* Remove a borda do botão */
-  cursor: pointer; /* Transforma o cursor em uma mão ao passar o mouse */
+  border: none;
+  cursor: pointer;
 }
 
 .square-button-long img {
   width: 60px;
   margin-right: 2em;
 }
+*/
 
 .label {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.label-circle {
   margin: 1em;
   font-size: 1.2em;
   font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions svg {
+  cursor: pointer;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.square-button-long {
+  max-width: 30%;
+  display: flex;
+  justify-content: space-around; /* Posiciona o ícone à direita */
+  align-items: center; /* Centraliza verticalmente o ícone e o texto */
+  padding: 0.5em;
+  border-radius: 25px;
+  margin: 0 auto 1.5em auto;
+}
+
+/* Estilos para o link dentro do botão */
+.square-button-long a {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o ícone e o texto */
+}
+
+/* Estilos para o ícone */
+.square-button-long img {
+  margin: 1em; /* Coloca o ícone à direita */
+}
+
+.add-button {
+  margin: 2em auto;
+  background-color: #d67f0c;
+  padding: 1em;
+  width: 10em;
+  border-radius: 25px;
+  color: black;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
 }

@@ -40,6 +40,45 @@ export const getUserButtons = createAsyncThunk(
   }
 );
 
+// Update a photo
+export const updateButton = createAsyncThunk(
+  "button/update",
+  async (formData, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+
+    const data = await ButtonService.updateButton(
+      { title: formData.title },
+      formData.id,
+      token
+    );
+
+    // Check for errors
+    if (data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0]);
+    }
+
+    return data;
+  }
+);
+
+// Delete a button
+export const deleteButton = createAsyncThunk(
+  "button/delete",
+  async (id, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
+
+    const data = await ButtonService.deleteButton(id, token);
+
+    console.log(data.errors);
+    // Check for errors
+    if (data.errors) {
+      return thunkAPI.rejectWithValue(data.errors[0]);
+    }
+
+    return data;
+  }
+);
+
 export const buttonSlice = createSlice({
   name: "button",
   initialState,
@@ -73,6 +112,49 @@ export const buttonSlice = createSlice({
         state.success = true;
         state.error = null;
         state.buttons = action.payload;
+      })
+      .addCase(updateButton.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updateButton.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+
+        state.buttons.map((button) => {
+          if (button._id === action.payload.button._id) {
+            return (button.title = action.payload.button.title);
+          }
+          return button;
+        });
+
+        state.message = action.payload.message;
+      })
+      .addCase(updateButton.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.button = null;
+      })
+      .addCase(deleteButton.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteButton.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+
+        state.buttons = state.buttons.filter((button) => {
+          return button._id !== action.payload.id;
+        });
+
+        state.message = action.payload.message;
+      })
+      .addCase(deleteButton.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.button = null;
       });
   },
 });

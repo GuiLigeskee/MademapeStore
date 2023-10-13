@@ -22,6 +22,7 @@ import Profile from "./pages/EditProfile/EditProfile.jsx";
 import EditPage from "./pages/EditPage/EditPage.jsx";
 import CreateButton from "./pages/CreateButton/CreateButton.jsx";
 import UserPage from "./pages/UserPage/UserPage.jsx";
+import UpdateButton from "./pages/CreateButton/UpdateButton.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/create-button",
         element: <CreateButton />,
+      },
+      {
+        path: "/update-button/:id",
+        element: <UpdateButton />,
       },
       {
         path: "/user-page/:id",

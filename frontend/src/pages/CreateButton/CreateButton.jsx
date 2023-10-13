@@ -28,7 +28,9 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const CreateButton = () => {
   const dispatch = useDispatch();
   const resetMessage = useResetComponentMessage(dispatch);
+  const navigate = useNavigate();
   const { message, loading, error } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
 
   // States
   const [title, setTitle] = useState("");
@@ -88,7 +90,6 @@ const CreateButton = () => {
     };
 
     dispatch(createButton(button));
-
     resetMessage();
   };
 

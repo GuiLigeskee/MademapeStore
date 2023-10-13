@@ -31,8 +31,8 @@ const Login = () => {
       password,
     };
 
-    navigate("/profile");
     dispatch(login(user));
+    navigate("/profile");
   };
 
   // clean all suth states

@@ -9,8 +9,6 @@ import Telegram from "../../assets/telegram.png";
 import TikTok from "../../assets/tik-tok.png";
 import Twitter from "../../assets/twitter.png";
 import Youtube from "../../assets/youtube.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 import { uploads } from "../../utils/config";
 
@@ -26,7 +24,11 @@ import { useParams } from "react-router-dom";
 
 // Redux
 import { getUserDetails } from "../../Slices/userSlice";
-import { getUserButtons } from "../../Slices/ButtonSlice";
+import {
+  deleteButton,
+  getUserButtons,
+  resetMessage,
+} from "../../Slices/ButtonSlice";
 
 const UserPage = () => {
   const { id } = useParams();
@@ -37,9 +39,10 @@ const UserPage = () => {
   const { user: userAuth } = useSelector((state) => state.auth);
   const {
     buttons,
-    loading: loadingPhoto,
-    error: errorPhoto,
-    message: messagePhoto,
+    button,
+    loading: loadingButton,
+    error: errorButton,
+    message: messageButton,
   } = useSelector((state) => state.button);
 
   const images = [
@@ -53,8 +56,6 @@ const UserPage = () => {
     Youtube,
   ];
 
-  const userBackgroundImage = user.backgroundImage;
-
   // Estilos para o background
   const backgroundStyles = {
     backgroundImage: `url(${uploads}/backgroundImage/${user.backgroundImage})`,
@@ -64,14 +65,27 @@ const UserPage = () => {
     backgroundPosition: "center center",
   };
 
+  // // Reset component message
+  // function resetComponentMessage() {
+  //   setTimeout(() => {
+  //     dispatch(resetMessage());
+  //   }, 2000);
+  // }
+
   // Load user data
   useEffect(() => {
     dispatch(getUserDetails(id));
     dispatch(getUserButtons(id));
   }, [dispatch, id]);
 
-  //localhost:5173/user-page/6520706c424cfc5235ca062b
-  http: return (
+  // Exclude a button
+  const handleDelete = (id) => {
+    dispatch(deleteButton(id));
+
+    resetMessage();
+  };
+
+  return (
     <div className="user-page" style={backgroundStyles}>
       <img src={user.backgroundImage} alt="" />
       <div>
@@ -86,10 +100,10 @@ const UserPage = () => {
       <h2 className="user-name" style={user.colorName}>
         {user.name}
       </h2>
+
       <div className="buttons">
         {buttons.map((button) => (
-          <a
-            href={button.url}
+          <div
             key={button._id}
             className={`button ${
               button.format === "circle" ? "circle-button" : "square-button"
@@ -97,28 +111,84 @@ const UserPage = () => {
           >
             {button.format === "circle" ? (
               <div className="circle-icon">
+                {id === userAuth._id ? (
+                  <div className="actions">
+                    <Link to={`/update-button/${button._id}`}>
+                      <BsPencilFill />
+                    </Link>
+                    <BsXLg onClick={() => handleDelete(button._id)} />
+                  </div>
+                ) : (
+                  <Link className="btn" to={`/button/${button._id}`}>
+                    Ver
+                  </Link>
+                )}
+                <a href={button.url}>
+                  <div
+                    className="circle-icon-background"
+                    style={{ backgroundColor: button.backgroundColor }}
+                  >
+                    <img
+                      src={images[button.icon]}
+                      alt={`Ícone ${button.icon}`}
+                    />
+                  </div>
+                </a>
                 <div
-                  className="circle-icon-background"
-                  style={{ backgroundColor: button.backgroundColor }}
+                  className="label-circle"
+                  style={{ color: button.colorTitle }}
                 >
-                  <img src={images[button.icon]} alt={`Ícone ${button.icon}`} />
+                  {button.title}
                 </div>
-                <div className="label">{button.title}</div>
               </div>
             ) : (
-              <div
-                className="square-button-long"
-                style={{
-                  backgroundColor: button.backgroundColor,
-                  color: button.colorTitle,
-                }}
-              >
-                <img src={images[button.icon]} alt={`Ícone ${button.icon}`} />
-                <p className="label">{button.title}</p>
+              <div>
+                {id === userAuth._id ? (
+                  <div className="actions">
+                    <Link to={`/update-button/${button._id}`}>
+                      <BsPencilFill />
+                    </Link>
+                    <BsXLg onClick={() => handleDelete(button._id)} />
+                  </div>
+                ) : (
+                  <Link className="btn" to={`/button/${button._id}`}>
+                    Ver
+                  </Link>
+                )}
+                <a href={button.url}>
+                  <div
+                    className="square-button-long"
+                    style={{
+                      backgroundColor: button.backgroundColor,
+                    }}
+                  >
+                    <img
+                      src={images[button.icon]}
+                      alt={`Ícone ${button.title}`}
+                    />
+                    <p className="label" style={{ color: button.colorTitle }}>
+                      {button.title.toUpperCase()}
+                    </p>
+                  </div>
+                </a>
               </div>
             )}
-          </a>
+          </div>
         ))}
+
+        {buttons.length === 0 && (
+          <p>
+            Ainda não há botões. <Link to="/create-button">Clique aqui</Link>{" "}
+            para criar um botão.
+          </p>
+        )}
+        {buttons.length > 0 && (
+          <a href="/create-button">
+            <div className="add-button">
+              <p>Adicionar botão</p>
+            </div>
+          </a>
+        )}
       </div>
     </div>
   );

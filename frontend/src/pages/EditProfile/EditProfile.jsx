@@ -59,7 +59,6 @@ const Profile = () => {
     const formData = new FormData();
     Object.keys(userData).forEach((key) => formData.append(key, userData[key]));
     dispatch(updateProfile(formData));
-    await dispatch(updateProfile(formData));
 
     resetMessage();
   };
