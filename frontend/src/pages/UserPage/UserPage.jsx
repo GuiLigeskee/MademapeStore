@@ -15,7 +15,7 @@ import { uploads } from "../../utils/config";
 // components
 import Message from "../../components/Messages/Message";
 import { Link } from "react-router-dom";
-import { BsFillEyeFill, BsPencilFill, BsXLg } from "react-icons/bs";
+import { BsPencilFill, BsXLg } from "react-icons/bs";
 
 // hooks
 import { useEffect, useState, useRef } from "react";
@@ -97,11 +97,13 @@ const UserPage = () => {
           />
         )}
       </div>
-      <h2 className="user-name" style={user.colorName}>
+      <h2 className="user-name" style={{ color: user.colorName }}>
         {user.name}
       </h2>
 
       <div className="buttons">
+        {errorButton && <Message msg={errorButton} type="error" />}
+        {messageButton && <Message msg={messageButton} type="success" />}
         {buttons.map((button) => (
           <div
             key={button._id}
@@ -111,17 +113,13 @@ const UserPage = () => {
           >
             {button.format === "circle" ? (
               <div className="circle-icon">
-                {id === userAuth._id ? (
+                {id === userAuth._id && (
                   <div className="actions">
                     <Link to={`/update-button/${button._id}`}>
                       <BsPencilFill />
                     </Link>
                     <BsXLg onClick={() => handleDelete(button._id)} />
                   </div>
-                ) : (
-                  <Link className="btn" to={`/button/${button._id}`}>
-                    Ver
-                  </Link>
                 )}
                 <a href={button.url}>
                   <div
@@ -143,17 +141,13 @@ const UserPage = () => {
               </div>
             ) : (
               <div>
-                {id === userAuth._id ? (
+                {id === userAuth._id && (
                   <div className="actions">
                     <Link to={`/update-button/${button._id}`}>
                       <BsPencilFill />
                     </Link>
                     <BsXLg onClick={() => handleDelete(button._id)} />
                   </div>
-                ) : (
-                  <Link className="btn" to={`/button/${button._id}`}>
-                    Ver
-                  </Link>
                 )}
                 <a href={button.url}>
                   <div
@@ -175,19 +169,12 @@ const UserPage = () => {
             )}
           </div>
         ))}
-
-        {buttons.length === 0 && (
-          <p>
-            Ainda não há botões. <Link to="/create-button">Clique aqui</Link>{" "}
-            para criar um botão.
-          </p>
-        )}
-        {buttons.length > 0 && (
-          <a href="/create-button">
-            <div className="add-button">
+        {buttons.length >= 0 && (
+          <div className="add-button">
+            <a href="/create-button">
               <p>Adicionar botão</p>
-            </div>
-          </a>
+            </a>
+          </div>
         )}
       </div>
     </div>

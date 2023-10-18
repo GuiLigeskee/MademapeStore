@@ -8,10 +8,10 @@ import { updateButton } from "../../Slices/ButtonSlice";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Compoments
 import Message from "../../components/Messages/Message";
-import { Link, useNavigate } from "react-router-dom";
 
 // icons
 import Whatsapp from "../../assets/whatsapp.png";
@@ -28,9 +28,10 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 const UpdateButton = () => {
   const dispatch = useDispatch();
   const resetMessage = useResetComponentMessage(dispatch);
-  const { button, message, error, loading } = useSelector(
-    (state) => state.button
-  );
+  const navigate = useNavigate();
+  const { message, error, loading } = useSelector((state) => state.button);
+  const { id } = useParams();
+  const { user } = useSelector((state) => state.auth);
 
   // States
   const [title, setTitle] = useState("");
@@ -81,40 +82,23 @@ const UpdateButton = () => {
     e.preventDefault();
 
     // Gather user data from states
-    const buttonData = {
-      title,
-      colorTitle,
-      backgroundColor,
-      format,
-      icon,
-      url,
+    const button = {
+      title: title,
+      colorTitle: colorTitle,
+      backgroundColor: backgroundColor,
+      format: format,
+      icon: icon,
+      url: url,
+      id,
     };
 
-    if (url) {
-      buttonData.url = url;
-    }
+    console.log(button);
 
-    if (icon) {
-      buttonData.icon = icon;
-    }
-
-    if (format) {
-      buttonData.format = format;
-    }
-
-    if (backgroundColor) {
-      buttonData.backgroundColor = backgroundColor;
-    }
-
-    if (colorTitle) {
-      buttonData.colorTitle = colorTitle;
-    }
-
-    console.log(buttonData);
-
-    dispatch(updateButton(buttonData));
+    dispatch(updateButton(button));
 
     resetMessage();
+
+    navigate(`/user-page/${user._id}`);
   };
 
   // Load user data

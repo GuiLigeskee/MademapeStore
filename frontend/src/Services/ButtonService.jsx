@@ -47,8 +47,8 @@ const getUserButtons = async (id, token) => {
 };
 
 // Update a photo
-const updateButtonService = async (buttonData, id, token) => {
-  const config = requestConfig("PUT", buttonData, token);
+const updateButtonService = async (data, id, token) => {
+  const config = requestConfig("PUT", data, token);
 
   try {
     const res = await fetch(api + "/button/" + id, config)

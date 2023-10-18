@@ -24,7 +24,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const { loading, error } = useSelector((state) => state.auth);
+  const { user, loading, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const Register = () => {
     console.log(user);
 
     dispatch(register(user));
-    navigate("/");
+    navigate("/profile");
   };
 
   // clean all auth states

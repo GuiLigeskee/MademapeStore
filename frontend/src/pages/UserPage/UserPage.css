@@ -115,3 +115,7 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.add-button a {
+  color: #000000;
+}

@@ -19,6 +19,8 @@ import { uploads } from "../../utils/config";
 const EditPage = () => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const resetMessage = useResetComponentMessage(dispatch);
 
   const { user, message, error, loading } = useSelector((state) => state.user);
@@ -62,9 +64,11 @@ const EditPage = () => {
     Object.keys(userData).forEach((key) => formData.append(key, userData[key]));
 
     // Despache a ação para atualizar o usuário
-    await dispatch(updateUserPage(formData));
+    dispatch(updateUserPage(formData));
 
     resetMessage();
+
+    navigate(`/user-page/${user._id}`);
   };
 
   const handleFileChange = (e) => {

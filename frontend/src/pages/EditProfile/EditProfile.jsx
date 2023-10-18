@@ -6,6 +6,7 @@ import { uploads } from "../../utils/config";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+import { useNavigate } from "react-router-dom";
 
 // Redux
 import { profile, updateProfile } from "../../Slices/userSlice";
@@ -17,6 +18,8 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const resetMessage = useResetComponentMessage(dispatch);
+
+  const navigate = useNavigate();
 
   const { user, message, error, loading } = useSelector((state) => state.user);
 
@@ -61,6 +64,8 @@ const Profile = () => {
     dispatch(updateProfile(formData));
 
     resetMessage();
+
+    navigate("/edit-page");
   };
 
   const handleFile = (e) => {

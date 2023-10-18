@@ -55,19 +55,19 @@ export const getUserButtons = createAsyncThunk(
 // Update a photo
 export const updateButton = createAsyncThunk(
   "button/update",
-  async (buttonData, thunkAPI) => {
+  async (button, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token;
 
     const data = await ButtonService.updateButtonService(
       {
-        title: buttonData.title,
-        url: buttonData.url,
-        icon: buttonData.icon,
-        format: buttonData.format,
-        backgroundColor: buttonData.backgroundColor,
-        colorTitle: buttonData.colorTitle,
+        title: button.title,
+        url: button.url,
+        icon: button.icon,
+        format: button.format,
+        backgroundColor: button.backgroundColor,
+        colorTitle: button.colorTitle,
       },
-      buttonData.id,
+      button.id,
       token
     );
 

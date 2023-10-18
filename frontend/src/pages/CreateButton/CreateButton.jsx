@@ -30,7 +30,7 @@ const CreateButton = () => {
   const resetMessage = useResetComponentMessage(dispatch);
   const navigate = useNavigate();
   const { message, loading, error } = useSelector((state) => state.auth);
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.auth);
 
   // States
   const [title, setTitle] = useState("");
@@ -91,6 +91,7 @@ const CreateButton = () => {
 
     dispatch(createButton(button));
     resetMessage();
+    navigate(`/user-page/${user._id}`);
   };
 
   useEffect(() => {
