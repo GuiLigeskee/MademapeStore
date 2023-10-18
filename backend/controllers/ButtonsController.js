@@ -82,9 +82,7 @@ const getButtonById = async (req, res) => {
 // Update a button
 const updateButton = async (req, res) => {
   const { id } = req.params;
-  const { title, colorTitle, backgroundColor, format, icon, url, clicks } =
-    req.body;
-
+  const { title, colorTitle, backgroundColor, format, icon, url } = req.body;
   const reqUser = req.user;
 
   const button = await Buttons.findById(id);
@@ -95,13 +93,13 @@ const updateButton = async (req, res) => {
     return;
   }
 
-  // // check if button belongs to user
-  // if (!button.userId.equals(reqUser._id)) {
-  //   res
-  //     .status(422)
-  //     .json({ errors: ["Ocorreu um erro, tente novamente mais tarde"] });
-  //   return;
-  // }
+  // check if button belongs to user
+  if (!button.userId.equals(reqUser._id)) {
+    res
+      .status(422)
+      .json({ errors: ["Ocorreu um erro, tente novamente mais tarde"] });
+    return;
+  }
 
   if (title) {
     button.title = title;
@@ -148,6 +146,21 @@ const counterClicks = async (req, res) => {
     .status(200)
     .json({ buttonId: id, userId: reqUser._id, message: "Botão clicado" });
 };
+
+// // Get button
+// const getCurrentButton = async (req, res) => {
+//   const { id } = req.params;
+
+//   const button = await Buttons.findById(new mongoose.Types.ObjectId(id));
+
+//   // Check if user exists
+//   if (!button) {
+//     res.status(404).json({ errors: ["Botão não encontrado!"] });
+//     return;
+//   }
+
+//   res.status(200).json(button);
+// };
 
 module.exports = {
   insertButton,

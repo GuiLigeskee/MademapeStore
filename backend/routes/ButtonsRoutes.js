@@ -8,6 +8,7 @@ const {
   getUserButtons,
   updateButton,
   counterClicks,
+  getCurrentButton,
 } = require("../controllers/ButtonsController");
 
 // Middleware

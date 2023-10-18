@@ -93,9 +93,9 @@ const CreateButton = () => {
     resetMessage();
   };
 
-  // useEffect(() => {
-  //   dispatch(createButton());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(createButton());
+  }, [dispatch]);
 
   return (
     <div className={styles["create-button"]}>

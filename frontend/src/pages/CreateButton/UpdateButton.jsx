@@ -77,22 +77,11 @@ const UpdateButton = () => {
     setFormat(shape); // Defina o botão selecionado ao clicar
   };
 
-  // fill button form
-  useEffect(() => {
-    if (button) {
-      setTitle(button.title);
-      setUrl(button.url);
-      setIcon(button.icon);
-      setBackgroundColor(button.backgroundColor);
-      setColorTitle(button.colorTitle);
-      setFormat(button.format);
-    }
-  }, [button]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const button = {
+    // Gather user data from states
+    const buttonData = {
       title,
       colorTitle,
       backgroundColor,
@@ -101,10 +90,38 @@ const UpdateButton = () => {
       url,
     };
 
-    dispatch(updateButton(button));
+    if (url) {
+      buttonData.url = url;
+    }
+
+    if (icon) {
+      buttonData.icon = icon;
+    }
+
+    if (format) {
+      buttonData.format = format;
+    }
+
+    if (backgroundColor) {
+      buttonData.backgroundColor = backgroundColor;
+    }
+
+    if (colorTitle) {
+      buttonData.colorTitle = colorTitle;
+    }
+
+    console.log(buttonData);
+
+    dispatch(updateButton(buttonData));
 
     resetMessage();
   };
+
+  // Load user data
+  useEffect(() => {
+    dispatch(updateButton());
+  }, [dispatch]);
+
   return (
     <div>
       <div className={styles["create-button"]}>

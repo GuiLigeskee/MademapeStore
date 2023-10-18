@@ -9,6 +9,18 @@ const initialState = {
   message: null,
 };
 
+// // Get user details, for edit data
+// export const buttonDetails = createAsyncThunk(
+//   "button/get",
+//   async (id, thunkAPI) => {
+//     const token = thunkAPI.getState().auth.user.token;
+
+//     const data = await ButtonService.buttonDetails(id, token);
+
+//     return data;
+//   }
+// );
+
 export const createButton = createAsyncThunk(
   "button/publish",
   async (formData, thunkAPI) => {
@@ -43,12 +55,19 @@ export const getUserButtons = createAsyncThunk(
 // Update a photo
 export const updateButton = createAsyncThunk(
   "button/update",
-  async (formData, thunkAPI) => {
+  async (buttonData, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token;
 
-    const data = await ButtonService.updateButton(
-      { title: formData.title },
-      formData.id,
+    const data = await ButtonService.updateButtonService(
+      {
+        title: buttonData.title,
+        url: buttonData.url,
+        icon: buttonData.icon,
+        format: buttonData.format,
+        backgroundColor: buttonData.backgroundColor,
+        colorTitle: buttonData.colorTitle,
+      },
+      buttonData.id,
       token
     );
 

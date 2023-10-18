@@ -1,5 +1,20 @@
 import { api, requestConfig } from "../utils/config";
 
+// // Get button details
+// const buttonDetails = async (id) => {
+//   const config = requestConfig("GET");
+
+//   try {
+//     const res = await fetch(api + "/button/details/" + id, config)
+//       .then((res) => res.json())
+//       .catch((err) => err);
+
+//     return res;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
 const createButtonService = async (formData, token) => {
   const config = requestConfig("POST", formData, token);
 
@@ -32,8 +47,8 @@ const getUserButtons = async (id, token) => {
 };
 
 // Update a photo
-const UpdateButton = async (formData, id, token) => {
-  const config = requestConfig("PUT", formData, token);
+const updateButtonService = async (buttonData, id, token) => {
+  const config = requestConfig("PUT", buttonData, token);
 
   try {
     const res = await fetch(api + "/button/" + id, config)
@@ -45,6 +60,20 @@ const UpdateButton = async (formData, id, token) => {
     console.log(error);
   }
 };
+// // Update a photo
+// const updateButtonService = async (buttonData, token, id) => {
+//   const config = requestConfig("PUT", buttonData, token);
+
+//   try {
+//     const res = await fetch(api + "/button/" + id, config)
+//       .then((res) => res.json())
+//       .catch((err) => err);
+
+//     return res;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 // Delete a button
 const deleteButton = async (id, token) => {
@@ -64,7 +93,7 @@ const deleteButton = async (id, token) => {
 const ButtonService = {
   createButtonService,
   getUserButtons,
-  UpdateButton,
+  updateButtonService,
   deleteButton,
 };
 
