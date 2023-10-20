@@ -80,7 +80,7 @@ const Profile = () => {
 
   return (
     <div id="edit-profile">
-      <h2 id="titulo">Configurações</h2>
+      <h2 id="titulo">Perfil</h2>
       {(user.profileImage || previewImage) && (
         <img
           className="profile-image"

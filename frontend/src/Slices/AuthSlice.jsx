@@ -26,8 +26,8 @@ export const register = createAsyncThunk(
 );
 
 // Logout a user
-export const logout = createAsyncThunk("auth/logout", async () => {
-  await authService.logout();
+export const logout = createAsyncThunk("auth/logout", () => {
+  authService.logout();
 });
 
 // Sing in a user

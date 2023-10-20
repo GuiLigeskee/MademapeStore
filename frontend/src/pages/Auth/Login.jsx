@@ -32,7 +32,7 @@ const Login = () => {
     };
 
     dispatch(login(user));
-    navigate("/profile");
+    navigate(`/profile`);
   };
 
   // clean all suth states

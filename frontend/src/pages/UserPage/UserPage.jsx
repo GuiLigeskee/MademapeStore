@@ -97,13 +97,11 @@ const UserPage = () => {
           />
         )}
       </div>
-      <h2 className="user-name" style={{ color: user.colorName }}>
+      <h2 className="user-name" style={{ color: user.nameColor }}>
         {user.name}
       </h2>
 
       <div className="buttons">
-        {errorButton && <Message msg={errorButton} type="error" />}
-        {messageButton && <Message msg={messageButton} type="success" />}
         {buttons.map((button) => (
           <div
             key={button._id}
@@ -169,7 +167,7 @@ const UserPage = () => {
             )}
           </div>
         ))}
-        {buttons.length >= 0 && (
+        {id === userAuth._id && (
           <div className="add-button">
             <a href="/create-button">
               <p>Adicionar botão</p>
