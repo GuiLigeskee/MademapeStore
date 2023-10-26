@@ -9,10 +9,8 @@ import MadeLinkLogo from "../../assets/MadeLink.jpeg";
 
 // Hooks
 import {
-  BsSearch,
   BsHouseDoorFill,
   BsFillPersonFill,
-  BsFillCameraFill,
   BsFillGearFill,
 } from "react-icons/bs";
 import { useState } from "react";
@@ -27,7 +25,7 @@ const Navbar = () => {
   const { auth } = useAuth();
   const { user } = useSelector((state) => state.auth);
 
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
 
   const navigate = useNavigate();
 
@@ -40,13 +38,13 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
 
-    if (query) {
-      return navigate(`/search?q=${query}`);
-    }
-  };
+  //   if (query) {
+  //     return navigate(`/search?q=${query}`);
+  //   }
+  // };
 
   return (
     <nav id="nav">

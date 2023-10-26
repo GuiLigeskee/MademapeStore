@@ -15,7 +15,8 @@ import { uploads } from "../../utils/config";
 // components
 import Message from "../../components/Messages/Message";
 import { Link } from "react-router-dom";
-import { BsPencilFill, BsXLg } from "react-icons/bs";
+import { BsPencilFill, BsXLg, BsFillPlusCircleFill } from "react-icons/bs";
+import ReactLoading from "react-loading";
 
 // hooks
 import { useEffect, useState, useRef } from "react";
@@ -65,18 +66,20 @@ const UserPage = () => {
     backgroundPosition: "center center",
   };
 
-  // // Reset component message
-  // function resetComponentMessage() {
-  //   setTimeout(() => {
-  //     dispatch(resetMessage());
-  //   }, 2000);
-  // }
-
   // Load user data
   useEffect(() => {
     dispatch(getUserDetails(id));
     dispatch(getUserButtons(id));
   }, [dispatch, id]);
+
+  // Atualizar botões do usuário sempre que um botão for atualizado em UpdateButton
+  useEffect(() => {
+    if (messageButton === "Button updated successfully") {
+      // Se uma atualização bem-sucedida ocorreu em UpdateButton, atualize os botões do usuário
+      dispatch(getUserButtons(id));
+      dispatch(resetMessage());
+    }
+  }, [messageButton, dispatch, id]);
 
   // Exclude a button
   const handleDelete = (id) => {
@@ -84,6 +87,15 @@ const UserPage = () => {
 
     resetMessage();
   };
+
+  if (loading || loadingButton) {
+    <ReactLoading
+      type={"bubbles"}
+      color={"#fffff"}
+      height={"20%"}
+      width={"20%"}
+    ></ReactLoading>;
+  }
 
   return (
     <div className="user-page" style={backgroundStyles}>
@@ -116,10 +128,13 @@ const UserPage = () => {
                     <Link to={`/update-button/${button._id}`}>
                       <BsPencilFill />
                     </Link>
-                    <BsXLg onClick={() => handleDelete(button._id)} />
+                    <BsXLg
+                      onClick={() => handleDelete(button._id)}
+                      id="delete"
+                    />
                   </div>
                 )}
-                <a href={button.url}>
+                <a href={button.url} target="_blank">
                   <div
                     className="circle-icon-background"
                     style={{ backgroundColor: button.backgroundColor }}
@@ -134,7 +149,7 @@ const UserPage = () => {
                   className="label-circle"
                   style={{ color: button.colorTitle }}
                 >
-                  {button.title}
+                  {button.title.toUpperCase()}
                 </div>
               </div>
             ) : (
@@ -144,10 +159,13 @@ const UserPage = () => {
                     <Link to={`/update-button/${button._id}`}>
                       <BsPencilFill />
                     </Link>
-                    <BsXLg onClick={() => handleDelete(button._id)} />
+                    <BsXLg
+                      onClick={() => handleDelete(button._id)}
+                      id="delete"
+                    />
                   </div>
                 )}
-                <a href={button.url}>
+                <a href={button.url} target="_blank">
                   <div
                     className="square-button-long"
                     style={{
@@ -170,6 +188,7 @@ const UserPage = () => {
         {id === userAuth._id && (
           <div className="add-button">
             <a href="/create-button">
+              <BsFillPlusCircleFill />
               <p>Adicionar botão</p>
             </a>
           </div>

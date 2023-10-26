@@ -109,7 +109,7 @@ const UpdateButton = () => {
   return (
     <div>
       <div className={styles["create-button"]}>
-        <h2 id={styles["titulo"]}>Criar Botão</h2>
+        <h2 id={styles["titulo"]}>Atualizar Botão</h2>
         <form onSubmit={handleSubmit}>
           <label>
             <span>

@@ -48,7 +48,7 @@ const Register = () => {
   }, [dispatch]);
 
   return (
-    <div id="register">
+    <div className="register">
       <p>
         <img src={MadeLinkLogo} alt="Made Link" id="logo" />
       </p>

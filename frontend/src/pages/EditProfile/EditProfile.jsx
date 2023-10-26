@@ -42,9 +42,7 @@ const Profile = () => {
     }
   }, [user]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     // Gather user data from states
     const userData = {
       name,
@@ -79,8 +77,8 @@ const Profile = () => {
   };
 
   return (
-    <div id="edit-profile">
-      <h2 id="titulo">Perfil</h2>
+    <div className="edit-profile">
+      <h2 className="titulo">Perfil</h2>
       {(user.profileImage || previewImage) && (
         <img
           className="profile-image"
@@ -93,7 +91,7 @@ const Profile = () => {
         />
       )}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="arquivo" id="foto-perfil">
+        <label htmlFor="arquivo" className="foto-perfil">
           <span>Carregar imagem de perfil</span>
           <input
             type="file"

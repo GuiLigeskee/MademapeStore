@@ -21,11 +21,9 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { loading, error } = useSelector((state) => state.auth);
+  const { user, loading, error } = useSelector((state) => state.auth);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     const user = {
       email,
       password,
@@ -41,7 +39,7 @@ const Login = () => {
   }, [dispatch]);
 
   return (
-    <div id="login">
+    <div className="login">
       <p>
         <img src={MadeLinkLogo} alt="Made Link" id="logo" />
       </p>

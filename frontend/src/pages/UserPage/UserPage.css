@@ -41,35 +41,17 @@
   padding: 1em;
 }
 
-/* .square-button-long {
-  max-width: 20em;
-  height: 5em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0.5em;
-  border-radius: 25px;
-  margin: 1.5em auto;
-  border: none;
-  cursor: pointer;
-}
-
-.square-button-long img {
-  width: 60px;
-  margin-right: 2em;
-}
-*/
-
 .label {
   font-size: 1.3em;
   font-weight: 600;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .label-circle {
   margin: 1em;
   font-size: 1.2em;
   font-weight: 600;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .actions {
@@ -79,43 +61,67 @@
 
 .actions svg {
   cursor: pointer;
-  width: 1.5em;
-  height: 1.5em;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+#delete {
+  color: rgb(238, 44, 44);
+  background-color: rgb(233, 174, 174);
+  border-radius: 50%;
+  padding: 2px;
 }
 
 .square-button-long {
-  max-width: 30%;
+  width: 50%;
   display: flex;
-  justify-content: space-around; /* Posiciona o ícone à direita */
-  align-items: center; /* Centraliza verticalmente o ícone e o texto */
-  padding: 0.5em;
-  border-radius: 25px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 50px;
   margin: 0 auto 1.5em auto;
+  font-family: "Fira Sans", sans-serif;
 }
 
-/* Estilos para o link dentro do botão */
 .square-button-long a {
   display: flex;
-  align-items: center; /* Centraliza verticalmente o ícone e o texto */
+  align-items: center;
 }
 
-/* Estilos para o ícone */
 .square-button-long img {
-  margin: 1em; /* Coloca o ícone à direita */
+  margin: 0.5em;
 }
 
-.add-button {
-  margin: 2em auto;
-  background-color: #d67f0c;
-  padding: 1em;
-  width: 10em;
-  border-radius: 25px;
-  color: black;
+.add-button p {
+  color: #d67f0c;
   font-size: 1.2em;
   font-weight: bold;
   cursor: pointer;
 }
 
-.add-button a {
+.add-button svg {
   color: #000000;
+  font-size: 3.2em;
+  cursor: pointer;
+  background-color: #d67f0c;
+  border-radius: 50%;
+  padding: 3px;
+  margin-bottom: 0.2em;
+}
+
+@media screen and (max-width: 768px) {
+  .user-page {
+    width: 100%;
+    margin: 0;
+    border: none;
+    padding: 1.5em 0;
+  }
+
+  .photo-profile {
+    width: 150px;
+    height: 150px;
+  }
+
+  .square-button-long {
+    width: 80%;
+  }
 }
