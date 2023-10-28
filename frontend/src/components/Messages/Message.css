@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   border: 3px solid #000;
-  max-width: 50%;
+  width: auto;
 }
 
 .message.error {

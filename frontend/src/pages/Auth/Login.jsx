@@ -21,7 +21,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { user, loading, error } = useSelector((state) => state.auth);
+  const { user, message, loading, error } = useSelector((state) => state.auth);
 
   const handleSubmit = () => {
     const user = {
@@ -59,9 +59,10 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password || ""}
         />
-        {!loading && <input type="submit" value="Entrar" />}
-        {loading && <input type="submit" value="Aguarde..." disabled />}
+        {!loading && <input type="submit" value="Salvar" />}
+        {loading && <input type="submit" disabled value="Aguarde..." />}
         {error && <Message msg={error} type="error" />}
+        {message && <Message msg={message} type="success" />}
       </form>
       <p>
         Não tem uma conta? <Link to="/register">Clique aqui</Link>
