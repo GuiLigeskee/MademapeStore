@@ -118,10 +118,10 @@ const EditPage = () => {
         {error && <Message msg={error} type="error" />}
         {message && <Message msg={message} type="success" />}
       </form>
-      <h2 id="titulo">Crie seus botões</h2>
+      {/* <h2 id="titulo">Crie seus botões</h2>
       <Link to="/create-button">
         <button>Clique aqui para criar um botão</button>
-      </Link>
+      </Link> */}
     </div>
   );
 };

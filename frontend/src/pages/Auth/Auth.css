@@ -45,7 +45,8 @@ span {
 
 #logo {
   text-align: center;
-  min-height: 10em;
+  width: auto;
+  min-height: 7em;
 }
 
 @media screen and (max-width: 768px) {
@@ -54,6 +55,7 @@ span {
     margin: 0;
     border: none;
     padding: 2em;
+    height: 90vh;
   }
 
   .register {
@@ -61,5 +63,6 @@ span {
     margin: 0;
     border: none;
     padding: 2em;
+    height: 90vh;
   }
 }
