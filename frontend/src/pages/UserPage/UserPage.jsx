@@ -100,6 +100,7 @@ const UserPage = () => {
   return (
     <div className="user-page" style={backgroundStyles}>
       <img src={user.backgroundImage} alt="" />
+
       <div>
         {user.profileImage && (
           <img

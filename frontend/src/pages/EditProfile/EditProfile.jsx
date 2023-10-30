@@ -23,9 +23,11 @@ const Profile = () => {
 
   const { user, message, error, loading } = useSelector((state) => state.user);
 
+  const [userPage, setUserPage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [previewImage, setPreviewImage] = useState("");
 
@@ -62,8 +64,6 @@ const Profile = () => {
     dispatch(updateProfile(formData));
 
     resetMessage();
-
-    navigate("/edit-page");
   };
 
   const handleFile = (e) => {
@@ -78,7 +78,7 @@ const Profile = () => {
 
   return (
     <div className="edit-profile">
-      <h2 className="titulo">Perfil</h2>
+      <h2 className="titulo">PERFIL</h2>
       {(user.profileImage || previewImage) && (
         <img
           className="profile-image"
@@ -100,9 +100,40 @@ const Profile = () => {
             id="arquivo"
           />
         </label>
-        <br />
+        <p id="obs">
+          Para melhor resultado na imagem, carregar uma imagem quadrada com
+          500x500 pixels.
+        </p>
+        <label htmlFor="text-color" id="text-color">
+          <span>Cor padrão do card:</span>
+          <input type="color" name="text-color" id="text-color" />
+        </label>
         <label>
-          <span>Alterar nome:</span>
+          <div class="switch-container">
+            <span>Tema do card</span>
+            <div class="toggle-switch">
+              <label id="switch-label">
+                <input type="checkbox" id="switch-input" />
+                <span class="slider" id="switch-span"></span>
+              </label>
+            </div>
+          </div>
+        </label>
+        <hr />
+        <label>
+          <span>Nome de usuário</span>
+          <div className="input-row">
+            <p>mademapestore/user-page/</p>
+            <input
+              type="text"
+              placeholder="Nome"
+              onChange={(e) => setUserPage(e.target.value)}
+              value={userPage || ""}
+            />
+          </div>
+        </label>
+        <label>
+          <span>Nome</span>
           <input
             type="text"
             placeholder="Nome"
@@ -110,16 +141,79 @@ const Profile = () => {
             value={name || ""}
           />
         </label>
-        <input type="email" placeholder="E-mail" disabled value={email || ""} />
         <label>
-          <span>Quer alterar sua senha?</span>
+          <span>Cargo ou área de atuação</span>
+          <input type="text" placeholder="cargo ou area de atuação" />
+        </label>
+        <label>
+          <span>Bio</span>
           <input
-            type="password"
-            placeholder="Digite sua nova senha..."
-            onChange={(e) => setPassword(e.target.value)}
-            value={password || ""}
+            type="text"
+            placeholder="Descrição do perfil"
+            onChange={(e) => setBio(e.target.value)}
+            value={bio || ""}
           />
         </label>
+        <label>
+          <div class="switch-container">
+            <span>Ícones minimalistas</span>
+            <div class="toggle-switch">
+              <label id="switch-label">
+                <input type="checkbox" id="switch-input" />
+                <span class="slider-2" id="switch-span"></span>
+              </label>
+            </div>
+          </div>
+        </label>
+
+        <div className="form2">
+          <label htmlFor="contactNumber">Contato</label>
+          <input
+            type="text"
+            id="contactNumber"
+            name="contactNumber"
+            placeholder="Número de contato"
+            required
+          />
+
+          <label htmlFor="phoneNumber">Telefone</label>
+          <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="Número de telefone"
+            required
+          />
+
+          <label htmlFor="whatsappNumber">WhatsApp</label>
+          <input
+            type="text"
+            id="whatsappNumber"
+            name="whatsappNumber"
+            placeholder="Número do WhatsApp"
+            required
+          />
+
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Seu email"
+            required
+          />
+
+          <label htmlFor="address">Endereço</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="Seu endereço"
+            required
+          />
+
+          <button type="submit">Enviar</button>
+        </div>
         {!loading && <input type="submit" value="Salvar" />}
         {loading && <input type="submit" disabled value="Aguarde..." />}
         {error && <Message msg={error} type="error" />}

@@ -1,9 +1,8 @@
 .edit-profile {
-  border: 3px solid #363636;
-  background-color: #000;
-  padding: 1.5em 2em;
-  width: auto;
-  margin: 2em auto;
+  /* border: 3px solid #363636;
+  background-color: #000; */
+  width: 30%;
+  margin: 1em auto;
   text-align: center;
 }
 
@@ -11,10 +10,14 @@
   color: #ccc;
 }
 
+hr {
+  margin: 1em 0;
+  color: #d67f0c;
+}
+
 .profile-image {
-  border: 3px solid #d67f0c;
   border-radius: 50%;
-  margin: 1em 0 1em 0;
+  margin: 0 0 1em 0;
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -31,6 +34,7 @@ input[type="file"] {
   background-color: #d67f0c;
   border-radius: 10px;
   cursor: pointer;
+  text-align: center;
 }
 
 .foto-perfil span {
@@ -38,12 +42,103 @@ input[type="file"] {
   padding: 0.2em 0.1em;
   font-weight: bold;
   font-size: 1.2em;
-  text-align: center;
+}
+
+#obs {
+  font-size: 0.8em;
+  margin: 0.5em;
+  letter-spacing: 1px;
 }
 
 .titulo {
   color: #d67f0c;
   margin: 1em 0;
+  letter-spacing: 2px;
+}
+.switch-container {
+  display: flex; /* Torna os elementos filhos flexíveis */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: space-between; /* Adiciona espaço ao redor dos elementos */
+}
+
+.toggle-switch {
+  position: relative;
+  width: 75px;
+}
+
+#switch-label {
+  width: 75px; /* Increase width */
+  height: 45px; /* Increase height */
+  background-color: #000000;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#switch-input {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+#switch-input:checked ~ .slider {
+  background-color: #ffffff;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: inset 9px -2px 0px 0px #ffffff;
+  background-color: #000000;
+  transition: 0.3s;
+}
+
+#switch-input:checked ~ .slider::before {
+  transform: translateX(25px);
+  background-color: #000000;
+  box-shadow: none;
+}
+
+#switch-input:checked ~ .slider-2 {
+  background-color: #d67f0c;
+}
+
+.slider-2::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: 0.3s;
+}
+
+#switch-input:checked ~ .slider-2::before {
+  transform: translateX(25px);
+  background-color: #d67f0c;
+  box-shadow: none;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.input-row input {
+  width: 48%;
 }
 
 @media screen and (max-width: 768px) {

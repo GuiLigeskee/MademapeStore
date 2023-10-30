@@ -2,7 +2,7 @@
 import styles from "./CreateButton.module.css";
 
 // Redux
-import { updateButton } from "../../Slices/ButtonSlice";
+import { updateButton, buttonDetails } from "../../Slices/ButtonSlice";
 
 // Hooks
 import { useState, useEffect } from "react";
@@ -29,7 +29,10 @@ const UpdateButton = () => {
   const dispatch = useDispatch();
   const resetMessage = useResetComponentMessage(dispatch);
   const navigate = useNavigate();
-  const { message, error, loading } = useSelector((state) => state.button);
+  const { button, message, error, loading } = useSelector(
+    (state) => state.button
+  );
+
   const { id } = useParams();
   const { user } = useSelector((state) => state.auth);
 
@@ -39,10 +42,10 @@ const UpdateButton = () => {
   const [icon, setIcon] = useState(0);
   const [buttonShape, setButtonShape] = useState("");
   const [format, setFormat] = useState("");
+  const [colorTitle, setColorTitle] = useState("#000000" || "#rrggbb");
   const [backgroundColor, setBackgroundColor] = useState(
     "#ffffff" || "#rrggbb"
   );
-  const [colorTitle, setColorTitle] = useState("#000000" || "#rrggbb");
 
   // Imagens dos ícones
   const images = [
@@ -77,6 +80,23 @@ const UpdateButton = () => {
     setButtonShape(shape);
     setFormat(shape); // Defina o botão selecionado ao clicar
   };
+
+  // load button TESTE
+  useEffect(() => {
+    dispatch(buttonDetails(id));
+  }, [dispatch]);
+
+  // fill button form TESTE
+  useEffect(() => {
+    if (button) {
+      setTitle(button.title);
+      setUrl(button.url);
+      setColorTitle(button.colorTitle);
+      setFormat(button.format);
+      setIcon(button.icon);
+      setBackgroundColor(button.backgroundColor);
+    }
+  }, [button]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

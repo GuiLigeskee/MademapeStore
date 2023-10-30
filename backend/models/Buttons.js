@@ -7,7 +7,7 @@ const buttonSchema = new mongoose.Schema(
     colorTitle: String,
     backgroundColor: String,
     format: String,
-    icon: Number,
+    icon: String,
     url: String,
     clicks: Array,
     userId: mongoose.ObjectId,

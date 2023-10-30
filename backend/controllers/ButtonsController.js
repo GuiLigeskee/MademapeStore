@@ -147,20 +147,20 @@ const counterClicks = async (req, res) => {
     .json({ buttonId: id, userId: reqUser._id, message: "Botão clicado" });
 };
 
-// // Get button
-// const getCurrentButton = async (req, res) => {
-//   const { id } = req.params;
+// Get button
+const getCurrentButton = async (req, res) => {
+  const { id } = req.params;
 
-//   const button = await Buttons.findById(new mongoose.Types.ObjectId(id));
+  const button = await Buttons.findById(new mongoose.Types.ObjectId(id));
 
-//   // Check if user exists
-//   if (!button) {
-//     res.status(404).json({ errors: ["Botão não encontrado!"] });
-//     return;
-//   }
+  // Check if user exists
+  if (!button) {
+    res.status(404).json({ errors: ["Botão não encontrado!"] });
+    return;
+  }
 
-//   res.status(200).json(button);
-// };
+  res.status(200).json(button);
+};
 
 module.exports = {
   insertButton,
@@ -169,4 +169,5 @@ module.exports = {
   getButtonById,
   updateButton,
   counterClicks,
+  getCurrentButton,
 };

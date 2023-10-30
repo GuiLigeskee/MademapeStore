@@ -3,23 +3,23 @@ import ButtonService from "../Services/ButtonService";
 
 const initialState = {
   buttons: [],
-  button: null,
+  button: {},
   error: null,
   loading: false,
   message: null,
 };
 
-// // Get user details, for edit data
-// export const buttonDetails = createAsyncThunk(
-//   "button/get",
-//   async (id, thunkAPI) => {
-//     const token = thunkAPI.getState().auth.user.token;
+// Get button TESTE
+export const buttonDetails = createAsyncThunk(
+  "button/getButton",
+  async (id, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token;
 
-//     const data = await ButtonService.buttonDetails(id, token);
+    const data = await ButtonService.buttonDetails(id, token);
 
-//     return data;
-//   }
-// );
+    return data;
+  }
+);
 
 export const createButton = createAsyncThunk(
   "button/publish",
@@ -108,6 +108,18 @@ export const buttonSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+      .addCase(buttonDetails.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(buttonDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.success = true;
+        state.error = null;
+        state.button = action.payload;
+      })
+
       .addCase(createButton.pending, (state) => {
         state.loading = true;
         state.error = null;
