@@ -45,7 +45,7 @@ input[type="file"] {
 }
 
 #obs {
-  font-size: 0.8em;
+  font-size: 0.6em;
   margin: 0.5em;
   letter-spacing: 1px;
 }
@@ -74,7 +74,7 @@ input[type="file"] {
   cursor: pointer;
 }
 
-#switch-input {
+.switch-input {
   position: absolute;
   display: none;
 }
@@ -87,7 +87,7 @@ input[type="file"] {
   transition: 0.3s;
 }
 
-#switch-input:checked ~ .slider {
+.switch-input:checked ~ .slider {
   background-color: #ffffff;
 }
 
@@ -104,13 +104,13 @@ input[type="file"] {
   transition: 0.3s;
 }
 
-#switch-input:checked ~ .slider::before {
+.switch-input:checked ~ .slider::before {
   transform: translateX(25px);
   background-color: #000000;
   box-shadow: none;
 }
 
-#switch-input:checked ~ .slider-2 {
+.switch-input:checked ~ .slider-2 {
   background-color: #d67f0c;
 }
 
@@ -126,7 +126,7 @@ input[type="file"] {
   transition: 0.3s;
 }
 
-#switch-input:checked ~ .slider-2::before {
+.switch-input:checked ~ .slider-2::before {
   transform: translateX(25px);
   background-color: #d67f0c;
   box-shadow: none;
@@ -139,6 +139,17 @@ input[type="file"] {
 
 .input-row input {
   width: 48%;
+}
+
+.form2 {
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  padding: 1em 1em 0;
+  margin-bottom: 1em;
+}
+
+.form2 input {
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {

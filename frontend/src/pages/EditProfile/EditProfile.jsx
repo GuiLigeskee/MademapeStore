@@ -23,11 +23,19 @@ const Profile = () => {
 
   const { user, message, error, loading } = useSelector((state) => state.user);
 
-  const [userPage, setUserPage] = useState("");
+  const [userUrl, setUserUrl] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
+  const [colorTheme, setColorTheme] = useState("#000000" || "#rrggbb");
+  const [darkTheme, setDarkTheme] = useState(false);
+  const [contactButtons, setContactButtons] = useState("");
+  const [work, setWork] = useState("");
+  const [typeIcons, setTypeIcons] = useState(false);
+  const [tell, setTell] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [address, setAddress] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [previewImage, setPreviewImage] = useState("");
 
@@ -41,13 +49,30 @@ const Profile = () => {
     if (user) {
       setName(user.name);
       setEmail(user.email);
+      setBio(user.bio);
+      setColorTheme(user.colorTheme);
+      setDarkTheme(user.darkTheme);
+      setWork(user.work);
+      setTypeIcons(user.typeIcons);
+      setTell(user.tell);
+      setWhatsapp(user.whatsapp);
+      setAddress(user.address);
     }
   }, [user]);
 
   const handleSubmit = async () => {
     // Gather user data from states
     const userData = {
-      name,
+      name: name,
+      email: email,
+      bio: bio,
+      colorTheme: colorTheme,
+      darkTheme: darkTheme,
+      work: work,
+      typeIcons: typeIcons,
+      tell: tell,
+      whatsapp: whatsapp,
+      address: address,
     };
 
     if (profileImage) {
@@ -56,6 +81,42 @@ const Profile = () => {
 
     if (password) {
       userData.password = password;
+    }
+
+    if (bio) {
+      user.bio = bio;
+    }
+
+    if (colorTheme) {
+      user.colorTheme = colorTheme;
+    }
+
+    if (address) {
+      user.address = address;
+    }
+
+    if (userUrl) {
+      user.userUrl = userUrl;
+    }
+
+    if (work) {
+      user.work = work;
+    }
+
+    if (typeIcons) {
+      user.typeIcons = typeIcons;
+    }
+
+    if (darkTheme) {
+      user.darkTheme = darkTheme;
+    }
+
+    if (whatsapp) {
+      user.whatsapp = whatsapp;
+    }
+
+    if (tell) {
+      user.tell = tell;
     }
 
     // build form data
@@ -75,6 +136,11 @@ const Profile = () => {
     // change image state
     setProfileImage(image);
   };
+
+  // Load user data
+  useEffect(() => {
+    dispatch(updateProfile());
+  }, [dispatch]);
 
   return (
     <div className="edit-profile">
@@ -106,14 +172,25 @@ const Profile = () => {
         </p>
         <label htmlFor="text-color" id="text-color">
           <span>Cor padrão do card:</span>
-          <input type="color" name="text-color" id="text-color" />
+          <input
+            type="color"
+            name="text-color"
+            id="text-color"
+            onChange={(e) => setColorTheme(e.target.value)}
+            value={colorTheme || ""}
+          />
         </label>
         <label>
           <div class="switch-container">
             <span>Tema do card</span>
             <div class="toggle-switch">
               <label id="switch-label">
-                <input type="checkbox" id="switch-input" />
+                <input
+                  type="checkbox"
+                  className="switch-input"
+                  onChange={(e) => setDarkTheme(e.target.value)}
+                  value={darkTheme || false}
+                />
                 <span class="slider" id="switch-span"></span>
               </label>
             </div>
@@ -127,8 +204,8 @@ const Profile = () => {
             <input
               type="text"
               placeholder="Nome"
-              onChange={(e) => setUserPage(e.target.value)}
-              value={userPage || ""}
+              onChange={(e) => setUserUrl(e.target.value)}
+              value={userUrl || ""}
             />
           </div>
         </label>
@@ -143,7 +220,11 @@ const Profile = () => {
         </label>
         <label>
           <span>Cargo ou área de atuação</span>
-          <input type="text" placeholder="cargo ou area de atuação" />
+          <input
+            type="text"
+            placeholder="cargo ou area de atuação"
+            onChange={(e) => setWork(e.target.value)}
+          />
         </label>
         <label>
           <span>Bio</span>
@@ -159,7 +240,12 @@ const Profile = () => {
             <span>Ícones minimalistas</span>
             <div class="toggle-switch">
               <label id="switch-label">
-                <input type="checkbox" id="switch-input" />
+                <input
+                  type="checkbox"
+                  className="switch-input"
+                  onChange={(e) => setTypeIcons(e.target.value)}
+                  value={typeIcons || false}
+                />
                 <span class="slider-2" id="switch-span"></span>
               </label>
             </div>
@@ -167,53 +253,85 @@ const Profile = () => {
         </label>
 
         <div className="form2">
-          <label htmlFor="contactNumber">Contato</label>
-          <input
-            type="text"
-            id="contactNumber"
-            name="contactNumber"
-            placeholder="Número de contato"
-            required
-          />
+          <label>
+            <div class="switch-container">
+              <span>Botões de contato</span>
+              <div class="toggle-switch">
+                <label id="switch-label">
+                  <input
+                    type="checkbox"
+                    className="switch-input"
+                    onChange={(e) => setContactButtons(e.target.value)}
+                    value={contactButtons || false}
+                  />
+                  <span class="slider-2" id="switch-span"></span>
+                </label>
+              </div>
+            </div>
+          </label>
 
-          <label htmlFor="phoneNumber">Telefone</label>
-          <input
-            type="text"
-            id="phoneNumber"
-            name="phoneNumber"
-            placeholder="Número de telefone"
-            required
-          />
+          <label htmlFor="phoneNumber">
+            <span>Telefone</span>
+            <input
+              type="text"
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="Número de telefone"
+              onChange={(e) => setTell(e.target.value)}
+              value={tell || ""}
+            />
+          </label>
 
-          <label htmlFor="whatsappNumber">WhatsApp</label>
-          <input
-            type="text"
-            id="whatsappNumber"
-            name="whatsappNumber"
-            placeholder="Número do WhatsApp"
-            required
-          />
+          <label htmlFor="whatsappNumber">
+            <span>WhatsApp</span>
+            <input
+              type="text"
+              id="whatsappNumber"
+              name="whatsappNumber"
+              placeholder="Número do WhatsApp"
+              onChange={(e) => setWhatsapp(e.target.value)}
+              value={whatsapp || ""}
+            />
+            <p id="obs">
+              Para número Brasileiro, iniciar com 55 + DDD + Número. Para número
+              Internacional, colocar o código do país (DDI). Caso seja um número
+              especial (por exemplo 0800 ou 4004) digitar livremente.
+            </p>
+          </label>
 
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Seu email"
-            required
-          />
+          <label htmlFor="email">
+            <span>Email</span>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Seu email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email || ""}
+            />
+          </label>
 
-          <label htmlFor="address">Endereço</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            placeholder="Seu endereço"
-            required
-          />
-
-          <button type="submit">Enviar</button>
+          <label htmlFor="address">
+            <span>Endereço</span>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Seu endereço"
+              onChange={(e) => setAddress(e.target.value)}
+              value={address || ""}
+            />
+          </label>
         </div>
+        <label>
+          <span>Alterar senha</span>
+          <input
+            type="password"
+            placeholder="Digite sua nova senha..."
+            onChange={(e) => setPassword(e.target.value)}
+            value={password || ""}
+          />
+        </label>
         {!loading && <input type="submit" value="Salvar" />}
         {loading && <input type="submit" disabled value="Aguarde..." />}
         {error && <Message msg={error} type="error" />}

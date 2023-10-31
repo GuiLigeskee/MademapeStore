@@ -85,7 +85,21 @@ const login = async (req, res) => {
 
 // Update user
 const update = async (req, res) => {
-  const { name, password, bio } = req.body;
+  const {
+    name,
+    password,
+    bio,
+    colorTheme,
+    darkTheme,
+    address,
+    tell,
+    whatsapp,
+    userUrl,
+    work,
+    typeIcons,
+    contactButtons,
+    email,
+  } = req.body;
 
   let profileImage = null;
 
@@ -115,6 +129,46 @@ const update = async (req, res) => {
 
   if (bio) {
     user.bio = bio;
+  }
+
+  if (colorTheme) {
+    user.colorTheme = colorTheme;
+  }
+
+  if (address) {
+    user.address = address;
+  }
+
+  if (userUrl) {
+    user.userUrl = userUrl;
+  }
+
+  if (work) {
+    user.work = work;
+  }
+
+  if (typeIcons) {
+    user.typeIcons = typeIcons;
+  }
+
+  if (darkTheme) {
+    user.darkTheme = darkTheme;
+  }
+
+  if (whatsapp) {
+    user.whatsapp = whatsapp;
+  }
+
+  if (tell) {
+    user.tell = tell;
+  }
+
+  if (contactButtons) {
+    user.contactButtons = contactButtons;
+  }
+
+  if (darkTheme) {
+    user.darkTheme = darkTheme;
   }
 
   await user.save();
