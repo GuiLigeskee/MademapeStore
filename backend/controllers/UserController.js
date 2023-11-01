@@ -174,6 +174,8 @@ const update = async (req, res) => {
   await user.save();
 
   res.status(200).json(user);
+
+  // console.log("Perfil atualizado com sucesso!");
 };
 
 // Get user by id

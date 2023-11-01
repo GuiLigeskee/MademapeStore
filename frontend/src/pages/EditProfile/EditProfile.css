@@ -56,9 +56,9 @@ input[type="file"] {
   letter-spacing: 2px;
 }
 .switch-container {
-  display: flex; /* Torna os elementos filhos flexíveis */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: space-between; /* Adiciona espaço ao redor dos elementos */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .toggle-switch {
@@ -67,8 +67,8 @@ input[type="file"] {
 }
 
 #switch-label {
-  width: 75px; /* Increase width */
-  height: 45px; /* Increase height */
+  width: 75px;
+  height: 45px;
   background-color: #000000;
   border-radius: 50px;
   cursor: pointer;
@@ -80,7 +80,6 @@ input[type="file"] {
 }
 
 .slider {
-  /* position: absolute; */
   width: 100%;
   height: 100%;
   border-radius: 50px;

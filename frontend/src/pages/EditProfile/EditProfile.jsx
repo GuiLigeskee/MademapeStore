@@ -30,7 +30,7 @@ const Profile = () => {
   const [bio, setBio] = useState("");
   const [colorTheme, setColorTheme] = useState("#000000" || "#rrggbb");
   const [darkTheme, setDarkTheme] = useState(false);
-  const [contactButtons, setContactButtons] = useState("");
+  const [contactButtons, setContactButtons] = useState(false);
   const [work, setWork] = useState("");
   const [typeIcons, setTypeIcons] = useState(false);
   const [tell, setTell] = useState("");
@@ -57,22 +57,28 @@ const Profile = () => {
       setTell(user.tell);
       setWhatsapp(user.whatsapp);
       setAddress(user.address);
+      setUserUrl(user.userUrl);
+      setContactButtons(user.contactButtons);
     }
   }, [user]);
 
-  const handleSubmit = async () => {
-    // Gather user data from states
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     const userData = {
-      name: name,
-      email: email,
-      bio: bio,
-      colorTheme: colorTheme,
-      darkTheme: darkTheme,
-      work: work,
-      typeIcons: typeIcons,
-      tell: tell,
-      whatsapp: whatsapp,
-      address: address,
+      name,
+      // profileImage: profileImage,
+      // name: name,
+      // userUrl: userUrl,
+      // email: email,
+      // bio: bio,
+      // colorTheme: colorTheme,
+      // darkTheme: darkTheme,
+      // work: work,
+      // typeIcons: typeIcons,
+      // tell: tell,
+      // whatsapp: whatsapp,
+      // address: address,
     };
 
     if (profileImage) {
@@ -84,39 +90,43 @@ const Profile = () => {
     }
 
     if (bio) {
-      user.bio = bio;
+      userData.bio = bio;
     }
 
     if (colorTheme) {
-      user.colorTheme = colorTheme;
+      userData.colorTheme = colorTheme;
     }
 
     if (address) {
-      user.address = address;
+      userData.address = address;
     }
 
     if (userUrl) {
-      user.userUrl = userUrl;
+      userData.userUrl = userUrl;
     }
 
     if (work) {
-      user.work = work;
+      userData.work = work;
     }
 
     if (typeIcons) {
-      user.typeIcons = typeIcons;
+      userData.typeIcons = typeIcons;
     }
 
     if (darkTheme) {
-      user.darkTheme = darkTheme;
+      userData.darkTheme = darkTheme;
     }
 
     if (whatsapp) {
-      user.whatsapp = whatsapp;
+      userData.whatsapp = whatsapp;
     }
 
     if (tell) {
-      user.tell = tell;
+      userData.tell = tell;
+    }
+
+    if (contactButtons) {
+      userData.contactButtons = contactButtons;
     }
 
     // build form data
@@ -136,11 +146,6 @@ const Profile = () => {
     // change image state
     setProfileImage(image);
   };
-
-  // Load user data
-  useEffect(() => {
-    dispatch(updateProfile());
-  }, [dispatch]);
 
   return (
     <div className="edit-profile">
@@ -177,7 +182,7 @@ const Profile = () => {
             name="text-color"
             id="text-color"
             onChange={(e) => setColorTheme(e.target.value)}
-            value={colorTheme || ""}
+            value={colorTheme || "#000000"}
           />
         </label>
         <label>
@@ -188,10 +193,10 @@ const Profile = () => {
                 <input
                   type="checkbox"
                   className="switch-input"
-                  onChange={(e) => setDarkTheme(e.target.value)}
-                  value={darkTheme || false}
+                  onChange={(e) => setDarkTheme(e.target.checked)}
+                  checked={darkTheme}
                 />
-                <span class="slider" id="switch-span"></span>
+                <span class="slider-2" id="switch-span"></span>
               </label>
             </div>
           </div>
@@ -224,6 +229,7 @@ const Profile = () => {
             type="text"
             placeholder="cargo ou area de atuação"
             onChange={(e) => setWork(e.target.value)}
+            value={work || ""}
           />
         </label>
         <label>
@@ -243,8 +249,8 @@ const Profile = () => {
                 <input
                   type="checkbox"
                   className="switch-input"
-                  onChange={(e) => setTypeIcons(e.target.value)}
-                  value={typeIcons || false}
+                  onChange={(e) => setTypeIcons(e.target.checked)}
+                  checked={typeIcons}
                 />
                 <span class="slider-2" id="switch-span"></span>
               </label>
@@ -261,8 +267,8 @@ const Profile = () => {
                   <input
                     type="checkbox"
                     className="switch-input"
-                    onChange={(e) => setContactButtons(e.target.value)}
-                    value={contactButtons || false}
+                    onChange={(e) => setContactButtons(e.target.checked)}
+                    checked={contactButtons}
                   />
                   <span class="slider-2" id="switch-span"></span>
                 </label>

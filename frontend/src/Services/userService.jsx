@@ -2,7 +2,7 @@ import { api, requestConfig } from "../utils/config";
 
 // Get user details
 const profile = async (data, token) => {
-  const config = requestConfig("GET", data, token);
+  const config = requestConfig("GET", data, token, true);
 
   try {
     const res = await fetch(api + "/users/profile", config)

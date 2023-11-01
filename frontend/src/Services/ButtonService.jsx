@@ -60,20 +60,6 @@ const updateButtonService = async (data, id, token) => {
     console.log(error);
   }
 };
-// // Update a photo
-// const updateButtonService = async (buttonData, token, id) => {
-//   const config = requestConfig("PUT", buttonData, token);
-
-//   try {
-//     const res = await fetch(api + "/button/" + id, config)
-//       .then((res) => res.json())
-//       .catch((err) => err);
-
-//     return res;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 // Delete a button
 const deleteButton = async (id, token) => {
