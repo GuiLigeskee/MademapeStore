@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/edit-page",
+        path: "/edit-page/:id",
         element: <EditPage />,
       },
       {

@@ -1,9 +1,6 @@
 .edit-page {
-  border: 3px solid #363636;
-  background-color: #000;
-  padding: 1.5em 2em;
-  width: auto;
-  margin: 2em auto;
+  width: 30%;
+  margin: 1em auto;
   text-align: center;
 }
 
@@ -56,6 +53,13 @@ input[type="color"] {
   height: 150px;
   object-fit: cover;
   object-position: center;
+}
+
+.add-button {
+  background-color: #d67f0c;
+  color: #000000;
+  padding: 1em;
+  border-radius: 15px;
 }
 
 @media screen and (max-width: 768px) {
