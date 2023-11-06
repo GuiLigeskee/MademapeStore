@@ -1,14 +1,14 @@
 import "./UserPage.css";
 
 // icons
-import Whatsapp from "../../assets/whatsapp.png";
-import Instagram from "../../assets/instagram.png";
-import Facebook from "../../assets/facebook.png";
-import Linkedin from "../../assets/linkedin.png";
-import Telegram from "../../assets/telegram.png";
-import TikTok from "../../assets/tik-tok.png";
-import Twitter from "../../assets/twitter.png";
-import Youtube from "../../assets/youtube.png";
+import Whatsapp from "/src/assets/whatsapp.png";
+import Instagram from "/src/assets/instagram.png";
+import Facebook from "/src/assets/facebook.png";
+import Linkedin from "/src/assets/linkedin.png";
+import Telegram from "/src/assets/telegram.png";
+import TikTok from "/src/assets/tik-tok.png";
+import Twitter from "/src/assets/twitter.png";
+import Youtube from "/src/assets/youtube.png";
 
 import { uploads } from "../../utils/config";
 
@@ -57,36 +57,11 @@ const UserPage = () => {
     Youtube,
   ];
 
-  // Estilos para o background
-  const backgroundStyles = {
-    backgroundImage: `url(${uploads}/backgroundImage/${user.backgroundImage})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-    backgroundPosition: "center center",
-  };
-
   // Load user data
   useEffect(() => {
     dispatch(getUserDetails(id));
     dispatch(getUserButtons(id));
   }, [dispatch, id]);
-
-  // Atualizar botões do usuário sempre que um botão for atualizado em UpdateButton
-  useEffect(() => {
-    if (messageButton === "Button updated successfully") {
-      // Se uma atualização bem-sucedida ocorreu em UpdateButton, atualize os botões do usuário
-      dispatch(getUserButtons(id));
-      dispatch(resetMessage());
-    }
-  }, [messageButton, dispatch, id]);
-
-  // Exclude a button
-  const handleDelete = (id) => {
-    dispatch(deleteButton(id));
-
-    resetMessage();
-  };
 
   if (loading || loadingButton) {
     <ReactLoading
@@ -98,9 +73,7 @@ const UserPage = () => {
   }
 
   return (
-    <div className="user-page" style={backgroundStyles}>
-      <img src={user.backgroundImage} alt="" />
-
+    <div className="user-page">
       <div>
         {user.profileImage && (
           <img
@@ -115,77 +88,27 @@ const UserPage = () => {
       </h2>
 
       <div className="buttons">
-        {buttons.map((button) => (
-          <div
-            key={button._id}
-            className={`button ${
-              button.format === "circle" ? "circle-button" : "square-button"
-            }`}
-          >
-            {button.format === "circle" ? (
-              <div className="circle-icon">
-                {id === userAuth._id && (
-                  <div className="actions">
-                    <Link to={`/update-button/${button._id}`}>
-                      <BsPencilFill />
-                    </Link>
-                    <BsXLg
-                      onClick={() => handleDelete(button._id)}
-                      id="delete"
-                    />
-                  </div>
-                )}
-                <a href={button.url} target="_blank">
-                  <div
-                    className="circle-icon-background"
-                    style={{ backgroundColor: user.colorTheme }}
-                  >
-                    <img
-                      src={images[button.icon]}
-                      alt={`Ícone ${button.icon}`}
-                    />
-                  </div>
-                </a>
+        {buttons &&
+          buttons.map((button) => (
+            <div key={button._id} className={`button`}>
+              <a href={button.url} target="_blank">
                 <div
-                  className="label-circle"
-                  style={{ color: button.colorTitle }}
+                  className="square-button-long"
+                  style={{
+                    backgroundColor: user.colorTheme,
+                  }}
                 >
-                  {button.title.toUpperCase()}
+                  <img
+                    src={images[button.icon]}
+                    alt={`Ícone ${button.title}`}
+                  />
+                  <p className="label" style={{ color: button.colorTitle }}>
+                    {button.title.toUpperCase()}
+                  </p>
                 </div>
-              </div>
-            ) : (
-              <div>
-                {id === userAuth._id && (
-                  <div className="actions">
-                    <Link to={`/update-button/${button._id}`}>
-                      <BsPencilFill />
-                    </Link>
-                    <BsXLg
-                      onClick={() => handleDelete(button._id)}
-                      id="delete"
-                    />
-                  </div>
-                )}
-                <a href={button.url} target="_blank">
-                  <div
-                    className="square-button-long"
-                    style={{
-                      backgroundColor: user.colorTheme,
-                    }}
-                  >
-                    <img
-                      src={images[button.icon]}
-                      alt={`Ícone ${button.title}`}
-                    />
-                    <p className="label" style={{ color: button.colorTitle }}>
-                      {button.title.toUpperCase()}
-                    </p>
-                  </div>
-                </a>
-              </div>
-            )}
-          </div>
-        ))}
+              </a>
+            </div>
+          ))}
       </div>
     </div>
   );

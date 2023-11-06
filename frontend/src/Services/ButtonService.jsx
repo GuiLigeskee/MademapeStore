@@ -15,8 +15,8 @@ const buttonDetails = async (id, token) => {
   }
 };
 
-const createButtonService = async (formData, token) => {
-  const config = requestConfig("POST", formData, token);
+const createButtonService = async (data, token) => {
+  const config = requestConfig("POST", data, token);
 
   try {
     const res = await fetch(api + "/button/create", config);

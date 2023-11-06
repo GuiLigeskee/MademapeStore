@@ -4,9 +4,6 @@ const { Schema } = mongoose;
 const buttonSchema = new mongoose.Schema(
   {
     title: String,
-    colorTitle: String,
-    backgroundColor: String,
-    format: String,
     icon: String,
     url: String,
     clicks: Array,

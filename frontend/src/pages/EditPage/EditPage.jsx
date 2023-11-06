@@ -22,7 +22,7 @@ import Message from "../../components/Messages/Message";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Redux
-import { getUserButtons } from "../../Slices/ButtonSlice";
+import { getUserButtons, deleteButton } from "../../Slices/ButtonSlice";
 
 // uploads
 import { uploads } from "../../utils/config";
@@ -60,6 +60,13 @@ const EditPage = () => {
   useEffect(() => {
     dispatch(getUserButtons(id));
   }, [dispatch, id]);
+
+  // Exclude a button
+  const handleDelete = (id) => {
+    dispatch(deleteButton(id));
+
+    resetMessage();
+  };
 
   return (
     <div className="edit-page">

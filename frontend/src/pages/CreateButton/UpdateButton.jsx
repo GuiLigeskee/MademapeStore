@@ -39,16 +39,11 @@ const UpdateButton = () => {
   // States
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
-  const [icon, setIcon] = useState(0);
-  const [buttonShape, setButtonShape] = useState("");
-  const [format, setFormat] = useState("");
-  const [colorTitle, setColorTitle] = useState("#000000" || "#rrggbb");
-  const [backgroundColor, setBackgroundColor] = useState(
-    "#ffffff" || "#rrggbb"
-  );
+  const [icon, setIcon] = useState("");
+  const [selectedIcon, setSelectedIcon] = useState(null);
 
   // Imagens dos ícones
-  const images = [
+  const icons = [
     Whatsapp,
     Instagram,
     Facebook,
@@ -59,26 +54,9 @@ const UpdateButton = () => {
     Youtube,
   ];
 
-  // Carrossel de icones
-  const goToPrevious = (e) => {
-    e.preventDefault();
-    setIcon((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToNext = (e) => {
-    e.preventDefault();
-    setIcon((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  // formatos de botões
-  const toggleButtonShape = (shape, e) => {
-    e.preventDefault();
-    setButtonShape(shape);
-    setFormat(shape); // Defina o botão selecionado ao clicar
+  const handleIconSelect = (index) => {
+    setIcon(index); // Atualize o estado 'icon' com o índice do ícone selecionado
+    setSelectedIcon(index); // Atualize o estado 'selectedIcon' para refletir a seleção
   };
 
   // load button TESTE
@@ -91,10 +69,7 @@ const UpdateButton = () => {
     if (button) {
       setTitle(button.title);
       setUrl(button.url);
-      setColorTitle(button.colorTitle);
-      setFormat(button.format);
       setIcon(button.icon);
-      setBackgroundColor(button.backgroundColor);
     }
   }, [button]);
 
@@ -103,12 +78,9 @@ const UpdateButton = () => {
 
     // Gather user data from states
     const button = {
-      title: title,
-      colorTitle: colorTitle,
-      backgroundColor: backgroundColor,
-      format: format,
-      icon: icon,
-      url: url,
+      title,
+      icon,
+      url,
       id,
     };
 
@@ -120,11 +92,6 @@ const UpdateButton = () => {
 
     navigate(`/user-page/${user._id}`);
   };
-
-  // Load user data
-  useEffect(() => {
-    dispatch(updateButton());
-  }, [dispatch]);
 
   return (
     <div>
@@ -159,67 +126,19 @@ const UpdateButton = () => {
             <span>
               Passo 3: <p>escolha um ícone para o seu botão.</p>
             </span>
-            <div className={styles["carousel"]}>
-              <button
-                className={styles["carousel-button"]}
-                onClick={goToPrevious}
-              >
-                <FontAwesomeIcon icon={faArrowLeft} />
-              </button>
-              <img src={images[icon]} alt={`Imagem ${icon + 1}`} />
-              <button className={styles["carousel-button"]} onClick={goToNext}>
-                <FontAwesomeIcon icon={faArrowRight} />
-              </button>
+            <div className={styles["icon-list"]}>
+              {icons.map((icon, index) => (
+                <div
+                  key={index}
+                  className={`${styles["icon-item"]} ${
+                    icon === selectedIcon ? styles["selected"] : ""
+                  }`}
+                  onClick={() => handleIconSelect(icon)}
+                >
+                  <img src={icon} alt={`Ícone ${index}`} />
+                </div>
+              ))}
             </div>
-          </label>
-          <label>
-            <span>
-              Passo 4: <p>escolha o formato do botão.</p>
-            </span>
-            <div className={styles["button-shape-carousel"]}>
-              <button
-                type="button"
-                onClick={(e) => toggleButtonShape("circle", e)}
-                className={`${styles["button-shape-option"]} ${
-                  format === "circle" ? styles["selected"] : ""
-                }`}
-              >
-                <div id={styles["shape-circle"]}></div>
-              </button>
-              <button
-                type="button"
-                onClick={(e) => toggleButtonShape("square", e)}
-                className={`${styles["button-shape-option"]} ${
-                  format === "square" ? styles["selected"] : ""
-                }`}
-              >
-                <div id={styles["shape-long-circle"]}></div>
-              </button>
-            </div>
-          </label>
-          <label htmlFor="button-color" id="button-color">
-            <span>
-              Passo 5: <p>Escolher cor do botão.</p>
-            </span>
-            <input
-              type="color"
-              name="button-color"
-              id="button-color"
-              onChange={(e) => setBackgroundColor(e.target.value)}
-              value={backgroundColor || ""}
-            />
-          </label>
-          <label htmlFor="title-color" id="title-color">
-            <span>
-              Passo 5: <p>Escolher cor do nome.</p>
-            </span>
-            <input
-              type="color"
-              name="title-color"
-              id="title-color"
-              onChange={(e) => setColorTitle(e.target.value)}
-              value={colorTitle || ""}
-            />
           </label>
           {!loading && <input type="submit" value="Atualizar botão" />}
           {loading && <input type="submit" disabled value="Aguarde..." />}

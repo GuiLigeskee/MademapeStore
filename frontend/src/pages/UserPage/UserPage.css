@@ -17,43 +17,12 @@
   margin: 0.5em 0 1.5em 0;
 }
 
-/* Estilos para botões circulares */
-.circle-button {
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border-radius: 50%;
-  margin: 0 auto 1.5em auto;
-}
-
-.circle-icon-background {
-  border-radius: 50%;
-  max-width: 7em;
-  max-height: 7em;
-  margin: 0 auto;
-}
-
-.button.circle-button img {
-  width: 7em;
-  height: 7em;
-  padding: 1em;
-}
-
 .label {
+  color: #000000;
   font-size: 1.3em;
   font-weight: 600;
   letter-spacing: 1.5px;
   font-family: "Fira Sans", sans-serif;
-}
-
-.label-circle {
-  margin: 1em;
-  font-size: 1.2em;
-  font-weight: 600;
-  font-family: "Fira Sans", sans-serif;
-  letter-spacing: 1.5px;
 }
 
 .actions {
@@ -68,8 +37,8 @@
 }
 
 #delete {
-  color: rgb(238, 44, 44);
-  background-color: rgb(233, 174, 174);
+  color: #ee2c2c;
+  background-color: #e9aeae;
   border-radius: 50%;
   padding: 2px;
 }
@@ -79,7 +48,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 50px;
+  border-radius: 10px;
   margin: 0 auto 1.5em auto;
   font-family: "Fira Sans", sans-serif;
 }
