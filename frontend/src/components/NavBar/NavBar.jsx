@@ -49,29 +49,23 @@ const Navbar = () => {
   return (
     <nav id="nav">
       <img src={MadeLinkLogo} alt="MadeLink" />
-      {/* <form id="search-form" onSubmit={handleSearch}>
-        <BsSearch />
-        <input
-          type="text"
-          placeholder="pesquisar"
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </form> */}
       <ul id="nav-links">
         {auth ? (
           <>
             {user && (
-              <li>
-                <NavLink to={`/user-page/${user._id}`}>
-                  <BsHouseDoorFill />
-                </NavLink>
-              </li>
+              <>
+                <li>
+                  <NavLink to={`/user-page/${user._id}`}>
+                    <BsHouseDoorFill />
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={`/edit-page/${user._id}`}>
+                    <BsFillGearFill />
+                  </NavLink>
+                </li>
+              </>
             )}
-            <li>
-              <NavLink to={`/edit-page`}>
-                <BsFillGearFill />
-              </NavLink>
-            </li>
             <li>
               <NavLink to="/profile">
                 <BsFillPersonFill />

@@ -67,18 +67,6 @@ const Profile = () => {
 
     const userData = {
       name,
-      // profileImage: profileImage,
-      // name: name,
-      // userUrl: userUrl,
-      // email: email,
-      // bio: bio,
-      // colorTheme: colorTheme,
-      // darkTheme: darkTheme,
-      // work: work,
-      // typeIcons: typeIcons,
-      // tell: tell,
-      // whatsapp: whatsapp,
-      // address: address,
     };
 
     if (profileImage) {

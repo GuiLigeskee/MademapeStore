@@ -138,7 +138,7 @@ const UserPage = () => {
                 <a href={button.url} target="_blank">
                   <div
                     className="circle-icon-background"
-                    style={{ backgroundColor: button.backgroundColor }}
+                    style={{ backgroundColor: user.colorTheme }}
                   >
                     <img
                       src={images[button.icon]}
@@ -170,7 +170,7 @@ const UserPage = () => {
                   <div
                     className="square-button-long"
                     style={{
-                      backgroundColor: button.backgroundColor,
+                      backgroundColor: user.colorTheme,
                     }}
                   >
                     <img
@@ -186,14 +186,6 @@ const UserPage = () => {
             )}
           </div>
         ))}
-        {id === userAuth._id && (
-          <div className="add-button">
-            <a href="/create-button">
-              <BsFillPlusCircleFill />
-              <p>Adicionar botão</p>
-            </a>
-          </div>
-        )}
       </div>
     </div>
   );

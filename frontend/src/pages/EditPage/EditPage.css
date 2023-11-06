@@ -1,5 +1,5 @@
 .edit-page {
-  width: 30%;
+  width: 100%;
   margin: 1em auto;
   text-align: center;
 }
@@ -59,7 +59,9 @@ input[type="color"] {
   background-color: #d67f0c;
   color: #000000;
   padding: 1em;
+  max-width: 30%;
   border-radius: 15px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {

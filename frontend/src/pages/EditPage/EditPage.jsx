@@ -1,10 +1,21 @@
 // CSS
 import "./EditPage.css";
 
+// icons
+import Whatsapp from "../../assets/whatsapp.png";
+import Instagram from "../../assets/instagram.png";
+import Facebook from "../../assets/facebook.png";
+import Linkedin from "../../assets/linkedin.png";
+import Telegram from "../../assets/telegram.png";
+import TikTok from "../../assets/tik-tok.png";
+import Twitter from "../../assets/twitter.png";
+import Youtube from "../../assets/youtube.png";
+
 // Hooks
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
+import { BsPencilFill, BsXLg, BsFillPlusCircleFill } from "react-icons/bs";
 
 // Compoments
 import Message from "../../components/Messages/Message";
@@ -24,8 +35,8 @@ const EditPage = () => {
   const resetMessage = useResetComponentMessage(dispatch);
 
   const { id } = useParams();
-  const { user, message, error, loading } = useSelector((state) => state.user);
-  const { userAuth } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.user);
+  const { user: userAuth } = useSelector((state) => state.auth);
   const {
     buttons,
     button,
@@ -34,10 +45,21 @@ const EditPage = () => {
     message: messageButton,
   } = useSelector((state) => state.button);
 
+  const images = [
+    Whatsapp,
+    Instagram,
+    Facebook,
+    Linkedin,
+    Telegram,
+    TikTok,
+    Twitter,
+    Youtube,
+  ];
+
   // Load user data
   useEffect(() => {
-    dispatch(getUserButtons(user._id));
-  }, [dispatch]);
+    dispatch(getUserButtons(id));
+  }, [dispatch, id]);
 
   return (
     <div className="edit-page">
@@ -52,31 +74,35 @@ const EditPage = () => {
       <p>Arraste e solte segurando nas setas para trocar a ordem dos botões.</p>
       <br />
       <div className="buttons">
-        {buttons.map((button) => (
-          <div key={button._id} className={`button ${button.format}`}>
-            {id === userAuth._id && (
-              <div className="actions">
-                <Link to={`/update-button/${button._id}`}>
-                  <BsPencilFill />
-                </Link>
-                <BsXLg onClick={() => handleDelete(button._id)} id="delete" />
-              </div>
-            )}
-            <a href={button.url} target="_blank">
-              <div
-                className="square-button-long"
-                style={{
-                  backgroundColor: button.backgroundColor,
-                }}
-              >
-                <img src={images[button.icon]} alt={`Ícone ${button.title}`} />
-                <p className="label" style={{ color: button.colorTitle }}>
-                  {button.title.toUpperCase()}
-                </p>
-              </div>
-            </a>
-          </div>
-        ))}
+        {buttons &&
+          buttons.map((button) => (
+            <div key={button._id} className={`button ${button.format}`}>
+              {id === userAuth._id && (
+                <div className="actions">
+                  <Link to={`/update-button/${button._id}`}>
+                    <BsPencilFill />
+                  </Link>
+                  <BsXLg onClick={() => handleDelete(button._id)} id="delete" />
+                </div>
+              )}
+              <a href={button.url} target="_blank">
+                <div
+                  className="square-button-long"
+                  style={{
+                    backgroundColor: user.colorTheme,
+                  }}
+                >
+                  <img
+                    src={images[button.icon]}
+                    alt={`Ícone ${button.title}`}
+                  />
+                  <p className="label" style={{ color: button.colorTitle }}>
+                    {button.title.toUpperCase()}
+                  </p>
+                </div>
+              </a>
+            </div>
+          ))}
       </div>
     </div>
   );
