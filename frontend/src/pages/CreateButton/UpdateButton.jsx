@@ -40,7 +40,7 @@ const UpdateButton = () => {
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [icon, setIcon] = useState("");
-  const [selectedIcon, setSelectedIcon] = useState(null);
+  const [iconIndex, setIconIndex] = useState(null);
 
   // Imagens dos ícones
   const icons = [
@@ -55,8 +55,7 @@ const UpdateButton = () => {
   ];
 
   const handleIconSelect = (index) => {
-    setIcon(index); // Atualize o estado 'icon' com o índice do ícone selecionado
-    setSelectedIcon(index); // Atualize o estado 'selectedIcon' para refletir a seleção
+    setIconIndex(index);
   };
 
   // load button TESTE
@@ -79,7 +78,7 @@ const UpdateButton = () => {
     // Gather user data from states
     const button = {
       title,
-      icon,
+      icon: iconIndex,
       url,
       id,
     };
@@ -131,11 +130,11 @@ const UpdateButton = () => {
                 <div
                   key={index}
                   className={`${styles["icon-item"]} ${
-                    icon === selectedIcon ? styles["selected"] : ""
+                    index === iconIndex ? styles["selected"] : ""
                   }`}
-                  onClick={() => handleIconSelect(icon)}
+                  onClick={() => handleIconSelect(index)}
                 >
-                  <img src={icon} alt={`Ícone ${index}`} />
+                  <img src={icon} alt={`Ícone ${icon}`} />
                 </div>
               ))}
             </div>

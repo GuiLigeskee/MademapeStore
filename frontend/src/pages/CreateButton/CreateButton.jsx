@@ -14,14 +14,14 @@ import Message from "../../components/Messages/Message";
 import { Link, useNavigate } from "react-router-dom";
 
 // icons
-import Whatsapp from "/src/assets/whatsapp.png";
-import Instagram from "/src/assets/instagram.png";
-import Facebook from "/src/assets/facebook.png";
-import Linkedin from "/src/assets/linkedin.png";
-import Telegram from "/src/assets/telegram.png";
-import TikTok from "/src/assets/tik-tok.png";
-import Twitter from "/src/assets/twitter.png";
-import Youtube from "/src/assets/youtube.png";
+import Whatsapp from "../../assets/whatsapp.png";
+import Instagram from "../../assets/instagram.png";
+import Facebook from "../../assets/facebook.png";
+import Linkedin from "../../assets/linkedin.png";
+import Telegram from "../../assets/telegram.png";
+import TikTok from "../../assets/tik-tok.png";
+import Twitter from "../../assets/twitter.png";
+import Youtube from "../../assets/youtube.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -35,8 +35,8 @@ const CreateButton = () => {
   // States
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
-  const [icon, setIcon] = useState("");
-  const [selectedIcon, setSelectedIcon] = useState(null);
+  const [icon, setIcon] = useState(null);
+  const [iconIndex, setIconIndex] = useState(null);
 
   // Imagens dos ícones
   const icons = [
@@ -50,8 +50,8 @@ const CreateButton = () => {
     Youtube,
   ];
 
-  const handleIconSelect = (icon) => {
-    setSelectedIcon(icon);
+  const handleIconSelect = (index) => {
+    setIconIndex(index);
   };
 
   const handleSubmit = (e) => {
@@ -59,18 +59,16 @@ const CreateButton = () => {
 
     const button = {
       title,
-      icon,
+      icon: iconIndex,
       url,
     };
+
+    console.log(button);
 
     dispatch(createButton(button));
     resetMessage();
     navigate(`/user-page/${user._id}`);
   };
-
-  useEffect(() => {
-    dispatch(createButton());
-  }, [dispatch]);
 
   return (
     <div className={styles["create-button"]}>
@@ -109,11 +107,11 @@ const CreateButton = () => {
               <div
                 key={index}
                 className={`${styles["icon-item"]} ${
-                  icon === selectedIcon ? styles["selected"] : ""
+                  index === iconIndex ? styles["selected"] : ""
                 }`}
-                onClick={() => handleIconSelect(icon)}
+                onClick={() => handleIconSelect(index)}
               >
-                <img src={icon} alt={`Ícone ${index}`} />
+                <img src={icon} alt={`Ícone ${icon}`} />
               </div>
             ))}
           </div>

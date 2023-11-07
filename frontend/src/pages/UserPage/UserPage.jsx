@@ -1,14 +1,14 @@
 import "./UserPage.css";
 
 // icons
-import Whatsapp from "/src/assets/whatsapp.png";
-import Instagram from "/src/assets/instagram.png";
-import Facebook from "/src/assets/facebook.png";
-import Linkedin from "/src/assets/linkedin.png";
-import Telegram from "/src/assets/telegram.png";
-import TikTok from "/src/assets/tik-tok.png";
-import Twitter from "/src/assets/twitter.png";
-import Youtube from "/src/assets/youtube.png";
+import Whatsapp from "../../assets/whatsapp.png";
+import Instagram from "../../assets/instagram.png";
+import Facebook from "../../assets/facebook.png";
+import Linkedin from "../../assets/linkedin.png";
+import Telegram from "../../assets/telegram.png";
+import TikTok from "../../assets/tik-tok.png";
+import Twitter from "../../assets/twitter.png";
+import Youtube from "../../assets/youtube.png";
 
 import { uploads } from "../../utils/config";
 
@@ -62,15 +62,6 @@ const UserPage = () => {
     dispatch(getUserDetails(id));
     dispatch(getUserButtons(id));
   }, [dispatch, id]);
-
-  if (loading || loadingButton) {
-    <ReactLoading
-      type={"bubbles"}
-      color={"#fffff"}
-      height={"20%"}
-      width={"20%"}
-    ></ReactLoading>;
-  }
 
   return (
     <div className="user-page">
