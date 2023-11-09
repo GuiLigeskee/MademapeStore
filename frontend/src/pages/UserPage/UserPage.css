@@ -1,7 +1,32 @@
 .user-page {
   padding: 1.5em 2em;
   text-align: center;
-  width: 100%;
+  background-color: #000000;
+  border: #ffffff;
+  border-radius: 25px;
+  margin: 1em;
+  width: 40%;
+  height: auto;
+}
+
+/* Modo Claro */
+body.modo-claro {
+  background-color: #ffffff;
+}
+
+.user-page.modo-claro {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+/* Modo Escuro */
+body.modo-escuro {
+  background-color: #171717;
+  color: #ffffff;
+}
+
+.user-page.modo-escuro {
+  background-color: #000000;
 }
 
 .photo-profile {
@@ -14,7 +39,23 @@
 }
 
 .user-name {
-  margin: 0.5em 0 1.5em 0;
+  margin: 1em 0;
+}
+
+.fixed-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+  color: #ffffff;
+  padding: 1em;
+  border: 2px solid #171717;
+  border-left: none;
+  border-right: none;
+  margin: 1em 0;
+}
+
+hr {
+  filter: invert(1);
 }
 
 .label {
@@ -44,9 +85,10 @@
 }
 
 .square-button-long {
-  width: 50%;
+  width: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 3em;
   align-items: center;
   border-radius: 10px;
   margin: 0 auto 1.5em auto;
@@ -65,7 +107,7 @@
 @media screen and (max-width: 768px) {
   .user-page {
     width: 100%;
-    margin: 0;
+    margin: 1em;
     border: none;
     padding: 1.5em 0;
   }

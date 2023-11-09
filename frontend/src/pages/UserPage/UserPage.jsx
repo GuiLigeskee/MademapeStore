@@ -15,6 +15,9 @@ import Globo from "../../assets/globo.png";
 import Spotify from "../../assets/spotify.png";
 import Discord from "../../assets/discord.png";
 import Money from "../../assets/circulo-usd.png";
+import Email from "../../assets/o-email.png";
+import Maps from "../../assets/maps.png";
+import Cellphone from "../../assets/cellphone.png";
 
 import { uploads } from "../../utils/config";
 
@@ -69,6 +72,14 @@ const UserPage = () => {
     Github,
   ];
 
+  useEffect(() => {
+    if (user.darkTheme === true) {
+      document.body.classList.add("modo-escuro");
+    } else {
+      document.body.classList.remove("modo-escuro");
+    }
+  }, [user.darkTheme]);
+
   // Load user data
   useEffect(() => {
     dispatch(getUserDetails(id));
@@ -76,19 +87,79 @@ const UserPage = () => {
   }, [dispatch, id]);
 
   return (
-    <div className="user-page">
+    <div
+      className={`user-page ${user.darkTheme ? "modo-escuro" : "modo-claro"}`}
+    >
       <div>
         {user.profileImage && (
           <img
             src={`${uploads}/users/${user.profileImage}`}
             alt={user.name}
             className="photo-profile"
+            style={{ border: "5px solid " + user.colorTheme }}
           />
         )}
       </div>
-      <h2 className="user-name" style={{ color: user.nameColor }}>
-        {user.name}
-      </h2>
+      <>
+        <h2 className="user-name" style={{ color: user.nameColor }}>
+          {user.name}
+        </h2>
+        <h4 className="bio">{user.bio}</h4>
+      </>
+
+      <div className="fixed-buttons">
+        {user.tell && (
+          <div id="fixed-button">
+            <a href={`tel:${user.tell}`} target="_blank">
+              {user.darkTheme === true ? (
+                <img src={Cellphone} style={{ filter: "invert(1)" }} />
+              ) : (
+                <img src={Cellphone} />
+              )}
+              <p>Telefone</p>
+            </a>
+          </div>
+        )}
+        {user.whatsapp && (
+          <div id="fixed-button">
+            <a href={`https://wa.me/${user.whatsapp}`} target="_blank">
+              {user.darkTheme === true ? (
+                <img src={Whatsapp} style={{ filter: "invert(1)" }} />
+              ) : (
+                <img src={Whatsapp} />
+              )}
+              <p>Whatsapp</p>
+            </a>
+          </div>
+        )}
+        {user.email && (
+          <div id="fixed-button">
+            <a href={`mailto:${user.email}`} target="_blank">
+              {user.darkTheme === true ? (
+                <img src={Email} style={{ filter: "invert(1)" }} />
+              ) : (
+                <img src={Email} />
+              )}
+              <p>Email</p>
+            </a>
+          </div>
+        )}
+        {user.address && (
+          <div id="fixed-button">
+            <a
+              href={`https://www.google.com/maps?q=${user.address}`}
+              target="_blank"
+            >
+              {user.darkTheme === true ? (
+                <img src={Maps} style={{ filter: "invert(1)" }} />
+              ) : (
+                <img src={Maps} />
+              )}
+              <p>Localização</p>
+            </a>
+          </div>
+        )}
+      </div>
 
       <div className="buttons">
         {buttons &&
