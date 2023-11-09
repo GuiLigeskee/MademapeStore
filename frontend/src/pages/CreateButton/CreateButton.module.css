@@ -89,7 +89,7 @@ label p {
   font-size: 16px;
   cursor: pointer;
   margin: 5px;
-  width: auto;
+  width: 40%;
 }
 
 .button-shape-option.selected {

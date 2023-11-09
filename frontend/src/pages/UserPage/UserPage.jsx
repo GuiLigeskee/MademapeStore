@@ -9,6 +9,12 @@ import Telegram from "../../assets/telegram.png";
 import TikTok from "../../assets/tik-tok.png";
 import Twitter from "../../assets/twitter.png";
 import Youtube from "../../assets/youtube.png";
+import Twitch from "../../assets/twitch.png";
+import Github from "../../assets/github.png";
+import Globo from "../../assets/globo.png";
+import Spotify from "../../assets/spotify.png";
+import Discord from "../../assets/discord.png";
+import Money from "../../assets/circulo-usd.png";
 
 import { uploads } from "../../utils/config";
 
@@ -47,6 +53,7 @@ const UserPage = () => {
   } = useSelector((state) => state.button);
 
   const images = [
+    Globo,
     Whatsapp,
     Instagram,
     Facebook,
@@ -55,6 +62,11 @@ const UserPage = () => {
     TikTok,
     Twitter,
     Youtube,
+    Money,
+    Twitch,
+    Discord,
+    Spotify,
+    Github,
   ];
 
   // Load user data

@@ -10,6 +10,12 @@ import Telegram from "../../assets/telegram.png";
 import TikTok from "../../assets/tik-tok.png";
 import Twitter from "../../assets/twitter.png";
 import Youtube from "../../assets/youtube.png";
+import Twitch from "../../assets/twitch.png";
+import Github from "../../assets/github.png";
+import Globo from "../../assets/globo.png";
+import Spotify from "../../assets/spotify.png";
+import Discord from "../../assets/discord.png";
+import Money from "../../assets/circulo-usd.png";
 
 // Hooks
 import React, { useEffect, useState } from "react";
@@ -46,6 +52,7 @@ const EditPage = () => {
   } = useSelector((state) => state.button);
 
   const images = [
+    Globo,
     Whatsapp,
     Instagram,
     Facebook,
@@ -54,6 +61,11 @@ const EditPage = () => {
     TikTok,
     Twitter,
     Youtube,
+    Money,
+    Twitch,
+    Discord,
+    Spotify,
+    Github,
   ];
 
   // Load user data

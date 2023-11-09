@@ -22,8 +22,12 @@ import Telegram from "../../assets/telegram.png";
 import TikTok from "../../assets/tik-tok.png";
 import Twitter from "../../assets/twitter.png";
 import Youtube from "../../assets/youtube.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Twitch from "../../assets/twitch.png";
+import Github from "../../assets/github.png";
+import Globo from "../../assets/globo.png";
+import Spotify from "../../assets/spotify.png";
+import Discord from "../../assets/discord.png";
+import Money from "../../assets/circulo-usd.png";
 
 const UpdateButton = () => {
   const dispatch = useDispatch();
@@ -42,8 +46,8 @@ const UpdateButton = () => {
   const [icon, setIcon] = useState("");
   const [iconIndex, setIconIndex] = useState(null);
 
-  // Imagens dos ícones
   const icons = [
+    Globo,
     Whatsapp,
     Instagram,
     Facebook,
@@ -52,6 +56,11 @@ const UpdateButton = () => {
     TikTok,
     Twitter,
     Youtube,
+    Money,
+    Twitch,
+    Discord,
+    Spotify,
+    Github,
   ];
 
   const handleIconSelect = (index) => {
