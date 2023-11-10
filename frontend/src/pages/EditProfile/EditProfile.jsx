@@ -117,6 +117,8 @@ const Profile = () => {
       userData.contactButtons = contactButtons;
     }
 
+    console.log(darkTheme);
+
     // build form data
     const formData = new FormData();
     Object.keys(userData).forEach((key) => formData.append(key, userData[key]));
@@ -174,9 +176,9 @@ const Profile = () => {
           />
         </label>
         <label>
-          <div class="switch-container">
+          <div className="switch-container">
             <span>Tema do card</span>
-            <div class="toggle-switch">
+            <div className="toggle-switch">
               <label id="switch-label">
                 <input
                   type="checkbox"
@@ -184,7 +186,7 @@ const Profile = () => {
                   onChange={(e) => setDarkTheme(e.target.checked)}
                   checked={darkTheme}
                 />
-                <span class="slider-2" id="switch-span"></span>
+                <span className="slider-2" id="switch-span"></span>
               </label>
             </div>
           </div>
@@ -230,9 +232,9 @@ const Profile = () => {
           />
         </label>
         <label>
-          <div class="switch-container">
+          <div className="switch-container">
             <span>Ícones minimalistas</span>
-            <div class="toggle-switch">
+            <div className="toggle-switch">
               <label id="switch-label">
                 <input
                   type="checkbox"
@@ -240,7 +242,7 @@ const Profile = () => {
                   onChange={(e) => setTypeIcons(e.target.checked)}
                   checked={typeIcons}
                 />
-                <span class="slider-2" id="switch-span"></span>
+                <span className="slider-2" id="switch-span"></span>
               </label>
             </div>
           </div>
@@ -248,9 +250,9 @@ const Profile = () => {
 
         <div className="form2">
           <label>
-            <div class="switch-container">
+            <div className="switch-container">
               <span>Botões de contato</span>
-              <div class="toggle-switch">
+              <div className="toggle-switch">
                 <label id="switch-label">
                   <input
                     type="checkbox"
@@ -258,7 +260,7 @@ const Profile = () => {
                     onChange={(e) => setContactButtons(e.target.checked)}
                     checked={contactButtons}
                   />
-                  <span class="slider-2" id="switch-span"></span>
+                  <span className="slider-2" id="switch-span"></span>
                 </label>
               </div>
             </div>
