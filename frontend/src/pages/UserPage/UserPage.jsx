@@ -1,4 +1,4 @@
-import "./UserPage.css";
+import styles from "./UserPage.module.css";
 
 // icons
 import Whatsapp from "../../assets/whatsapp.png";
@@ -88,86 +88,104 @@ const UserPage = () => {
 
   return (
     <div
-      className={`user-page ${user.darkTheme ? "modo-escuro" : "modo-claro"}`}
+      className={`${styles["user-page"]} ${
+        user.darkTheme ? styles["modo-escuro"] : styles["modo-claro"]
+      }`}
     >
       <div>
         {user.profileImage && (
           <img
             src={`${uploads}/users/${user.profileImage}`}
             alt={user.name}
-            className="photo-profile"
+            className={styles["photo-profile"]}
             style={{ border: "5px solid " + user.colorTheme }}
           />
         )}
       </div>
       <>
-        <h2 className="user-name" style={{ color: user.nameColor }}>
-          {user.name}
-        </h2>
-        <h4 className="bio">{user.bio}</h4>
+        <h2 className={styles["user-name"]}>{user.name}</h2>
+        <h4 className={styles["bio"]}>{user.bio}</h4>
       </>
 
-      <div className="fixed-buttons">
-        {user.tell && (
-          <div id="fixed-button">
-            <a href={`tel:${user.tell}`} target="_blank">
-              {user.darkTheme === true ? (
-                <img src={Cellphone} style={{ filter: "invert(1)" }} />
-              ) : (
-                <img src={Cellphone} />
-              )}
-              <p>Telefone</p>
-            </a>
-          </div>
-        )}
-        {user.whatsapp && (
-          <div id="fixed-button">
-            <a href={`https://wa.me/${user.whatsapp}`} target="_blank">
-              {user.darkTheme === true ? (
-                <img src={Whatsapp} style={{ filter: "invert(1)" }} />
-              ) : (
-                <img src={Whatsapp} />
-              )}
-              <p>Whatsapp</p>
-            </a>
-          </div>
-        )}
-        {user.email && (
-          <div id="fixed-button">
-            <a href={`mailto:${user.email}`} target="_blank">
-              {user.darkTheme === true ? (
-                <img src={Email} style={{ filter: "invert(1)" }} />
-              ) : (
-                <img src={Email} />
-              )}
-              <p>Email</p>
-            </a>
-          </div>
-        )}
-        {user.address && (
-          <div id="fixed-button">
-            <a
-              href={`https://www.google.com/maps?q=${user.address}`}
-              target="_blank"
-            >
-              {user.darkTheme === true ? (
-                <img src={Maps} style={{ filter: "invert(1)" }} />
-              ) : (
-                <img src={Maps} />
-              )}
-              <p>Localização</p>
-            </a>
-          </div>
-        )}
-      </div>
+      {user.contactButtons === true && (
+        <div className={styles["fixed-buttons"]}>
+          {user.tell && (
+            <div id={styles["fixed-button"]}>
+              <a href={`tel:${user.tell}`} target="_blank">
+                {user.darkTheme === true ? (
+                  <img src={Cellphone} style={{ filter: "invert(1)" }} />
+                ) : (
+                  <img src={Cellphone} />
+                )}
+                {user.darkTheme === true ? (
+                  <p style={{ color: "#ffffff" }}>Telefone</p>
+                ) : (
+                  <p style={{ color: "#000000" }}>Telefone</p>
+                )}
+              </a>
+            </div>
+          )}
+          {user.whatsapp && (
+            <div id={styles["fixed-button"]}>
+              <a href={`https://wa.me/${user.whatsapp}`} target="_blank">
+                {user.darkTheme === true ? (
+                  <img src={Whatsapp} style={{ filter: "invert(1)" }} />
+                ) : (
+                  <img src={Whatsapp} />
+                )}
+                {user.darkTheme === true ? (
+                  <p style={{ color: "#ffffff" }}>Whatsapp</p>
+                ) : (
+                  <p style={{ color: "#000000" }}>Whatsapp</p>
+                )}
+              </a>
+            </div>
+          )}
+          {user.email && (
+            <div id={styles["fixed-button"]}>
+              <a href={`mailto:${user.email}`} target="_blank">
+                {user.darkTheme === true ? (
+                  <img src={Email} style={{ filter: "invert(1)" }} />
+                ) : (
+                  <img src={Email} />
+                )}
+                {user.darkTheme === true ? (
+                  <p style={{ color: "#ffffff" }}>Email</p>
+                ) : (
+                  <p style={{ color: "#000000" }}>Email</p>
+                )}
+              </a>
+            </div>
+          )}
+          {user.address && (
+            <div id={styles["fixed-button"]}>
+              <a
+                href={`https://www.google.com/maps?q=${user.address}`}
+                target="_blank"
+              >
+                {user.darkTheme === true ? (
+                  <img src={Maps} style={{ filter: "invert(1)" }} />
+                ) : (
+                  <img src={Maps} />
+                )}
+                {user.darkTheme === true ? (
+                  <p style={{ color: "#ffffff" }}>Maps</p>
+                ) : (
+                  <p style={{ color: "#000000" }}>Maps</p>
+                )}
+              </a>
+            </div>
+          )}
+        </div>
+      )}
 
-      <div className="buttons">
+      <div className={styles["buttons"]}>
         {buttons &&
           buttons.map((button) => (
-            <div key={button._id} className={`button`}>
+            <div key={button._id} className={styles["button"]}>
               <a href={button.url} target="_blank">
                 <div
-                  className="square-button-long"
+                  className={styles["square-button-long"]}
                   style={{
                     backgroundColor: user.colorTheme,
                   }}
@@ -176,7 +194,10 @@ const UserPage = () => {
                     src={images[button.icon]}
                     alt={`Ícone ${button.title}`}
                   />
-                  <p className="label" style={{ color: button.colorTitle }}>
+                  <p
+                    className={styles["label"]}
+                    style={{ color: button.colorTitle }}
+                  >
                     {button.title.toUpperCase()}
                   </p>
                 </div>

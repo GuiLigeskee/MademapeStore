@@ -64,6 +64,57 @@ input[type="color"] {
   margin: 0 auto;
 }
 
+.buttons {
+  margin-top: 1.5em;
+}
+
+.label {
+  color: #000000;
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3em 1em;
+}
+
+.actions svg {
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+#delete {
+  color: #ee2c2c;
+  background-color: #e9aeae;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.square-button-long {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3em;
+  align-items: center;
+  border-radius: 10px;
+  margin: 0 auto 1.5em auto;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.square-button-long a {
+  display: flex;
+  align-items: center;
+}
+
+.square-button-long img {
+  margin: 0.5em;
+}
+
 @media screen and (max-width: 768px) {
   .edit-page {
     width: 100%;

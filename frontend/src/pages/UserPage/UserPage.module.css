@@ -9,7 +9,6 @@
   height: auto;
 }
 
-/* Modo Claro */
 body.modo-claro {
   background-color: #ffffff;
 }
@@ -17,12 +16,6 @@ body.modo-claro {
 .user-page.modo-claro {
   background-color: #f0f0f0;
   color: #000000;
-}
-
-/* Modo Escuro */
-body.modo-escuro {
-  background-color: #171717;
-  color: #ffffff;
 }
 
 .user-page.modo-escuro {
@@ -44,18 +37,17 @@ body.modo-escuro {
 
 .fixed-buttons {
   display: flex;
-  justify-content: center;
-  gap: 2em;
+  justify-content: space-around;
   color: #ffffff;
-  padding: 1em;
+  padding: 1em 2em;
   border: 2px solid #171717;
   border-left: none;
   border-right: none;
   margin: 1em 0;
 }
 
-hr {
-  filter: invert(1);
+.buttons {
+  margin-top: 1.5em;
 }
 
 .label {
@@ -64,24 +56,6 @@ hr {
   font-weight: 600;
   letter-spacing: 1.5px;
   font-family: "Fira Sans", sans-serif;
-}
-
-.actions {
-  display: flex;
-  justify-content: space-around;
-}
-
-.actions svg {
-  cursor: pointer;
-  font-size: 1.5em;
-  color: #ffffff;
-}
-
-#delete {
-  color: #ee2c2c;
-  background-color: #e9aeae;
-  border-radius: 50%;
-  padding: 2px;
 }
 
 .square-button-long {

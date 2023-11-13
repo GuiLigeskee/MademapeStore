@@ -42,7 +42,7 @@ const Profile = () => {
   // Load user data
   useEffect(() => {
     dispatch(profile());
-  }, []);
+  }, [dispatch]);
 
   // fill user form
   useEffect(() => {
@@ -51,14 +51,14 @@ const Profile = () => {
       setEmail(user.email);
       setBio(user.bio);
       setColorTheme(user.colorTheme);
-      setDarkTheme(user.darkTheme || false);
+      setDarkTheme(user.darkTheme);
       setWork(user.work);
-      setTypeIcons(user.typeIcons || false);
+      setTypeIcons(user.typeIcons);
       setTell(user.tell);
       setWhatsapp(user.whatsapp);
       setAddress(user.address);
       setUserUrl(user.userUrl);
-      setContactButtons(user.contactButtons || false);
+      setContactButtons(user.contactButtons);
     }
   }, [user]);
 
@@ -100,6 +100,7 @@ const Profile = () => {
     if (typeIcons !== undefined && typeIcons !== null) {
       userData.typeIcons = typeIcons;
     }
+
     if (darkTheme !== undefined && darkTheme !== null) {
       userData.darkTheme = darkTheme;
     }
@@ -115,6 +116,8 @@ const Profile = () => {
     if (contactButtons !== undefined && contactButtons !== null) {
       userData.contactButtons = contactButtons;
     }
+
+    console.log(darkTheme);
 
     // build form data
     const formData = new FormData();
