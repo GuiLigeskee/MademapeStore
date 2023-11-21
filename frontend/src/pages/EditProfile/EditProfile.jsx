@@ -177,7 +177,7 @@ const Profile = () => {
         </label>
         <label>
           <div className="switch-container">
-            <span>Tema do card</span>
+            <span>Tema escuro</span>
             <div className="toggle-switch">
               <label id="switch-label">
                 <input
@@ -231,7 +231,7 @@ const Profile = () => {
             value={bio || ""}
           />
         </label>
-        <label>
+        {/* <label>
           <div className="switch-container">
             <span>Ícones minimalistas</span>
             <div className="toggle-switch">
@@ -246,7 +246,7 @@ const Profile = () => {
               </label>
             </div>
           </div>
-        </label>
+        </label> */}
 
         <div className="form2">
           <label>

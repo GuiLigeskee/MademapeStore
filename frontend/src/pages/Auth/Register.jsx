@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 // Redux
 import { register, reset } from "../../slices/authSlice";
+import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -22,9 +23,11 @@ const Register = () => {
 
   const dispatch = useDispatch();
 
+  const resetMessage = useResetComponentMessage(dispatch);
+
   const navigate = useNavigate();
 
-  const { user, loading, error } = useSelector((state) => state.auth);
+  const { user, message, loading, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,10 +39,8 @@ const Register = () => {
       confirmPassword,
     };
 
-    console.log(user);
-
     dispatch(register(user));
-    navigate("/profile");
+    resetMessage();
   };
 
   // clean all auth states
@@ -81,6 +82,7 @@ const Register = () => {
         {!loading && <input type="submit" value="Cadastrar" />}
         {loading && <input type="submit" value="Aguarde..." disabled />}
         {error && <Message msg={error} type="error" />}
+        {message && <Message msg={message} type="success" />}
       </form>
       <p>
         Já possui uma conta? <Link to="/login">Clique aqui</Link>

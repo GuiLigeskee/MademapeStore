@@ -90,9 +90,8 @@ const EditPage = () => {
         </div>
       </a>
       <br />
-      <p>Arraste e solte segurando nas setas para trocar a ordem dos botões.</p>
-      <br />
       <div className="buttons">
+        <h2>Seus botões</h2>
         {buttons &&
           buttons.map((button) => (
             <div key={button._id} className={`button ${button.format}`}>

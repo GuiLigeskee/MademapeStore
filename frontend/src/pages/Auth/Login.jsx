@@ -9,9 +9,11 @@ import MadeLinkLogo from "../../assets/MadeLink.jpeg";
 // Hooks
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
 
 // Redux
 import { login, reset } from "../../slices/authSlice";
+import { resetMessage } from "../../Slices/userSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,18 +21,22 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
+  const resetMessage = useResetComponentMessage(dispatch);
+
   const navigate = useNavigate();
 
   const { user, message, loading, error } = useSelector((state) => state.auth);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     const user = {
       email,
       password,
     };
 
     dispatch(login(user));
-    navigate(`/profile`);
+    resetMessage();
   };
 
   // clean all suth states

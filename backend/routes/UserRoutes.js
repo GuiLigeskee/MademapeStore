@@ -21,7 +21,6 @@ const {
 } = require("../middlewares/userValidation");
 const authGuard = require("../middlewares/authGuard");
 const { imageUpload } = require("../middlewares/imageUpload");
-const { backgroundUpload } = require("../middlewares/imgBackgroundUpload");
 
 // routes
 router.post("/register", userCreateValidation(), validate, register);

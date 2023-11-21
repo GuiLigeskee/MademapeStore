@@ -66,6 +66,9 @@ input[type="color"] {
 
 .buttons {
   margin-top: 1.5em;
+  background-color: #000000;
+  padding: 1em 2em;
+  border-radius: 15px;
 }
 
 .label {
