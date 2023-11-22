@@ -18,6 +18,7 @@ import Money from "../../assets/circulo-usd.png";
 import Email from "../../assets/o-email.png";
 import Maps from "../../assets/maps.png";
 import Cellphone from "../../assets/cellphone.png";
+import Pix from "../../assets/pix.png";
 
 import { uploads } from "../../utils/config";
 
@@ -86,6 +87,27 @@ const UserPage = () => {
     dispatch(getUserButtons(id));
   }, [dispatch, id]);
 
+  const handlePixButtonClick = () => {
+    if (user.pix) {
+      // Criar um elemento de área de transferência temporário
+      const textarea = document.createElement("textarea");
+      textarea.value = user.pix;
+
+      // Adicionar o elemento ao corpo do documento
+      document.body.appendChild(textarea);
+
+      // Selecionar e copiar o conteúdo
+      textarea.select();
+      document.execCommand("copy");
+
+      // Remover o elemento temporário
+      document.body.removeChild(textarea);
+
+      // Mensagem para o usuário indicando que o conteúdo foi copiado
+      alert("Chave pix copiada");
+    }
+  };
+
   return (
     <div
       className={`${styles["user-page"]} ${
@@ -118,9 +140,9 @@ const UserPage = () => {
                   <img src={Cellphone} />
                 )}
                 {user.darkTheme === true ? (
-                  <p style={{ color: "#ffffff" }}>Telefone</p>
+                  <p style={{ color: "#ffffff" }}>Tell</p>
                 ) : (
-                  <p style={{ color: "#000000" }}>Telefone</p>
+                  <p style={{ color: "#000000" }}>Tell</p>
                 )}
               </a>
             </div>
@@ -134,9 +156,9 @@ const UserPage = () => {
                   <img src={Whatsapp} />
                 )}
                 {user.darkTheme === true ? (
-                  <p style={{ color: "#ffffff" }}>Whatsapp</p>
+                  <p style={{ color: "#ffffff" }}>Whats</p>
                 ) : (
-                  <p style={{ color: "#000000" }}>Whatsapp</p>
+                  <p style={{ color: "#000000" }}>Whats</p>
                 )}
               </a>
             </div>
@@ -174,6 +196,20 @@ const UserPage = () => {
                   <p style={{ color: "#000000" }}>Maps</p>
                 )}
               </a>
+            </div>
+          )}
+          {user.pix && (
+            <div id={styles["fixed-button"]} onClick={handlePixButtonClick}>
+              {user.darkTheme === true ? (
+                <img src={Money} style={{ filter: "invert(1)" }} />
+              ) : (
+                <img src={Money} />
+              )}
+              {user.darkTheme === true ? (
+                <p style={{ color: "#ffffff" }}>Pix</p>
+              ) : (
+                <p style={{ color: "#000000" }}>Pix</p>
+              )}
             </div>
           )}
         </div>

@@ -18,6 +18,7 @@ const userSchema = new Schema(
     typeIcons: Boolean,
     darkTheme: Boolean,
     contactButtons: Boolean,
+    pix: String,
   },
   {
     timestamps: true,

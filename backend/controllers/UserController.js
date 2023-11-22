@@ -93,6 +93,7 @@ const update = async (req, res) => {
     darkTheme,
     address,
     tell,
+    pix,
     whatsapp,
     userUrl,
     work,
@@ -161,6 +162,10 @@ const update = async (req, res) => {
 
   if (tell) {
     user.tell = tell;
+  }
+
+  if (pix) {
+    user.pix = pix;
   }
 
   if (contactButtons) {

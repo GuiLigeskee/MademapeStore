@@ -39,11 +39,19 @@ body.modo-claro {
   display: flex;
   justify-content: space-around;
   color: #ffffff;
-  padding: 1em 1em;
+  padding: 1em;
   border: 2px solid #171717;
   border-left: none;
   border-right: none;
   margin: 1em 0;
+}
+
+#fixed-button img {
+  height: 2.5em;
+}
+
+#fixed-button {
+  cursor: pointer;
 }
 
 .buttons {

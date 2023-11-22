@@ -34,6 +34,7 @@ const Profile = () => {
   const [work, setWork] = useState("");
   const [typeIcons, setTypeIcons] = useState(false);
   const [tell, setTell] = useState("");
+  const [pix, setPix] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [address, setAddress] = useState("");
   const [profileImage, setProfileImage] = useState("");
@@ -55,6 +56,7 @@ const Profile = () => {
       setWork(user.work);
       setTypeIcons(user.typeIcons);
       setTell(user.tell);
+      setPix(user.pix);
       setWhatsapp(user.whatsapp);
       setAddress(user.address);
       setUserUrl(user.userUrl);
@@ -111,6 +113,10 @@ const Profile = () => {
 
     if (tell) {
       userData.tell = tell;
+    }
+
+    if (pix) {
+      userData.pix = pix;
     }
 
     if (contactButtons !== undefined && contactButtons !== null) {
@@ -231,23 +237,6 @@ const Profile = () => {
             value={bio || ""}
           />
         </label>
-        {/* <label>
-          <div className="switch-container">
-            <span>Ícones minimalistas</span>
-            <div className="toggle-switch">
-              <label id="switch-label">
-                <input
-                  type="checkbox"
-                  className="switch-input"
-                  onChange={(e) => setTypeIcons(e.target.checked)}
-                  checked={typeIcons}
-                />
-                <span className="slider-2" id="switch-span"></span>
-              </label>
-            </div>
-          </div>
-        </label> */}
-
         <div className="form2">
           <label>
             <div className="switch-container">
@@ -316,6 +305,18 @@ const Profile = () => {
               placeholder="Seu endereço"
               onChange={(e) => setAddress(e.target.value)}
               value={address || ""}
+            />
+          </label>
+
+          <label htmlFor="pix">
+            <span>Chave pix</span>
+            <input
+              type="text"
+              name="pix"
+              id="pix"
+              placeholder="Digite sua chave pix"
+              onChange={(e) => setPix(e.target.value)}
+              value={pix || ""}
             />
           </label>
         </div>
