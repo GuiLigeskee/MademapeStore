@@ -232,10 +232,6 @@ const userPage = async (req, res) => {
     user.backgroundImage = backgroundImage;
   }
 
-  if (nameColor) {
-    user.nameColor = nameColor;
-  }
-
   await user.save();
 
   res.status(200).json(user);

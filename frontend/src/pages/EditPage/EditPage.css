@@ -1,6 +1,6 @@
 .edit-page {
   width: 40%;
-  margin: 1em auto;
+  margin: 2em auto;
   text-align: center;
 }
 
@@ -59,7 +59,7 @@ input[type="color"] {
   background-color: #d67f0c;
   color: #000000;
   padding: 1em;
-  max-width: 30%;
+  max-width: 50%;
   border-radius: 15px;
   margin: 0 auto;
 }
@@ -102,20 +102,11 @@ input[type="color"] {
   width: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0 3em;
+  padding: 0.5em 2em;
   align-items: center;
   border-radius: 10px;
   margin: 0 auto 1.5em auto;
   font-family: "Fira Sans", sans-serif;
-}
-
-.square-button-long a {
-  display: flex;
-  align-items: center;
-}
-
-.square-button-long img {
-  margin: 0.5em;
 }
 
 @media screen and (max-width: 768px) {
@@ -123,6 +114,15 @@ input[type="color"] {
     width: 100%;
     margin: 0;
     border: none;
-    padding: 2em;
+    padding: 1em;
+  }
+
+  .add-button {
+    background-color: #d67f0c;
+    color: #000000;
+    padding: 1em;
+    max-width: 50%;
+    border-radius: 15px;
+    margin: 0 auto;
   }
 }

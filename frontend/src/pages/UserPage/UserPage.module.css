@@ -39,7 +39,7 @@ body.modo-claro {
   display: flex;
   justify-content: space-around;
   color: #ffffff;
-  padding: 1em 2em;
+  padding: 1em 1em;
   border: 2px solid #171717;
   border-left: none;
   border-right: none;
@@ -62,20 +62,11 @@ body.modo-claro {
   width: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0 3em;
+  padding: 0.5em 2em;
   align-items: center;
   border-radius: 10px;
   margin: 0 auto 1.5em auto;
   font-family: "Fira Sans", sans-serif;
-}
-
-.square-button-long a {
-  display: flex;
-  align-items: center;
-}
-
-.square-button-long img {
-  margin: 0.5em;
 }
 
 @media screen and (max-width: 768px) {
@@ -92,6 +83,6 @@ body.modo-claro {
   }
 
   .square-button-long {
-    width: 80%;
+    width: 90%;
   }
 }

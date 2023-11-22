@@ -192,7 +192,7 @@ const Profile = () => {
           </div>
         </label>
         <hr />
-        <label>
+        {/* <label>
           <span>Nome de usuário</span>
           <div className="input-row">
             <p>mademapestore/user-page/</p>
@@ -203,7 +203,7 @@ const Profile = () => {
               value={userUrl || ""}
             />
           </div>
-        </label>
+        </label> */}
         <label>
           <span>Nome</span>
           <input
