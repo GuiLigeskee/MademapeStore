@@ -1,5 +1,5 @@
 .user-page {
-  padding: 1.5em 2em;
+  padding: 1em 1.5em;
   text-align: center;
   background-color: #000000;
   border: #ffffff;
@@ -24,7 +24,6 @@ body.modo-claro {
 
 .photo-profile {
   border-radius: 50%;
-  margin: 1em 0 0 0;
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -32,18 +31,18 @@ body.modo-claro {
 }
 
 .user-name {
-  margin: 1em 0;
+  margin: 0.5em 0;
 }
 
 .fixed-buttons {
   display: flex;
   justify-content: space-around;
   color: #ffffff;
-  padding: 1em;
+  padding: 0.5em;
   border: 2px solid #171717;
   border-left: none;
   border-right: none;
-  margin: 1em 0;
+  margin: 0.5em 0;
 }
 
 #fixed-button img {
@@ -55,14 +54,14 @@ body.modo-claro {
 }
 
 .buttons {
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 .label {
   color: #000000;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   font-family: "Fira Sans", sans-serif;
 }
 
@@ -73,7 +72,7 @@ body.modo-claro {
   padding: 0.5em 2em;
   align-items: center;
   border-radius: 10px;
-  margin: 0 auto 1.5em auto;
+  margin: 0 auto 0.5em auto;
   font-family: "Fira Sans", sans-serif;
 }
 
