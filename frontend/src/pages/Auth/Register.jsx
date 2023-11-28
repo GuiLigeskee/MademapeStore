@@ -43,10 +43,20 @@ const Register = () => {
     resetMessage();
   };
 
-  // clean all auth states
+  // Clean all auth states and redirect after 2 seconds if the user is logged in
   useEffect(() => {
-    dispatch(reset());
-  }, [dispatch]);
+    if (user) {
+      const redirectTimeout = setTimeout(() => {
+        navigate("/profile");
+      }, 500);
+
+      return () => clearTimeout(redirectTimeout);
+    }
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, dispatch, navigate]);
 
   return (
     <div className="register">
