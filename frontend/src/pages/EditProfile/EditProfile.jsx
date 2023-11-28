@@ -255,70 +255,75 @@ const Profile = () => {
             </div>
           </label>
 
-          <label htmlFor="phoneNumber">
-            <span>Telefone</span>
-            <input
-              type="text"
-              id="phoneNumber"
-              name="phoneNumber"
-              placeholder="Número de telefone"
-              onChange={(e) => setTell(e.target.value)}
-              value={tell || ""}
-            />
-          </label>
+          {contactButtons && (
+            <div>
+              <label htmlFor="phoneNumber">
+                <span>Telefone</span>
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  placeholder="Número de telefone"
+                  onChange={(e) => setTell(e.target.value)}
+                  value={tell || ""}
+                />
+              </label>
 
-          <label htmlFor="whatsappNumber">
-            <span>WhatsApp</span>
-            <input
-              type="text"
-              id="whatsappNumber"
-              name="whatsappNumber"
-              placeholder="Número do WhatsApp"
-              onChange={(e) => setWhatsapp(e.target.value)}
-              value={whatsapp || ""}
-            />
-            <p id="obs">
-              Para número Brasileiro, iniciar com 55 + DDD + Número. Para número
-              Internacional, colocar o código do país (DDI). Caso seja um número
-              especial (por exemplo 0800 ou 4004) digitar livremente.
-            </p>
-          </label>
+              <label htmlFor="whatsappNumber">
+                <span>WhatsApp</span>
+                <input
+                  type="text"
+                  id="whatsappNumber"
+                  name="whatsappNumber"
+                  placeholder="Número do WhatsApp"
+                  onChange={(e) => setWhatsapp(e.target.value)}
+                  value={whatsapp || ""}
+                />
+                <p id="obs">
+                  Para número Brasileiro, iniciar com 55 + DDD + Número. Para
+                  número Internacional, colocar o código do país (DDI). Caso
+                  seja um número especial (por exemplo 0800 ou 4004) digitar
+                  livremente.
+                </p>
+              </label>
 
-          <label htmlFor="email">
-            <span>Email</span>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Seu email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email || ""}
-            />
-          </label>
+              <label htmlFor="email">
+                <span>Email</span>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Seu email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email || ""}
+                />
+              </label>
 
-          <label htmlFor="address">
-            <span>Endereço</span>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              placeholder="Seu endereço"
-              onChange={(e) => setAddress(e.target.value)}
-              value={address || ""}
-            />
-          </label>
+              <label htmlFor="address">
+                <span>Endereço</span>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Seu endereço"
+                  onChange={(e) => setAddress(e.target.value)}
+                  value={address || ""}
+                />
+              </label>
 
-          <label htmlFor="pix">
-            <span>Chave pix</span>
-            <input
-              type="text"
-              name="pix"
-              id="pix"
-              placeholder="Digite sua chave pix"
-              onChange={(e) => setPix(e.target.value)}
-              value={pix || ""}
-            />
-          </label>
+              <label htmlFor="pix">
+                <span>Chave pix</span>
+                <input
+                  type="text"
+                  name="pix"
+                  id="pix"
+                  placeholder="Digite sua chave pix"
+                  onChange={(e) => setPix(e.target.value)}
+                  value={pix || ""}
+                />
+              </label>
+            </div>
+          )}
         </div>
         <label>
           <span>Alterar senha</span>
