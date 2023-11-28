@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
 
 // Redux
-import { register, reset } from "../../slices/authSlice";
+import { register, reset } from "../../Slices/AuthSlice";
 import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
 
 const Register = () => {

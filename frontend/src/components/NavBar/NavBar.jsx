@@ -4,7 +4,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 // CSS
-import "./Navbar.css";
+import "./NavBar.css";
 import MadeLinkLogo from "../../assets/MadeLink.jpeg";
 
 // Hooks
@@ -14,7 +14,7 @@ import {
   BsFillGearFill,
 } from "react-icons/bs";
 import { useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../Hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
