@@ -23,19 +23,18 @@ const authGuard = require("../middlewares/authGuard");
 const { imageUpload } = require("../middlewares/imageUpload");
 
 // routes
+router.get("/:id", getUserById);
+router.get("/", getUsers);
+router.put("/userpage", userPage);
 router.post("/register", userCreateValidation(), validate, register);
 router.get("/profile", authGuard, getCurrentUser);
 router.post("/login", loginValidation(), validate, login);
 router.put(
   "/profile",
-  authGuard, // somente user
-  // userUpdateValidation(),
+  authGuard,
   validate,
   imageUpload.single("profileImage"),
   update
 );
-router.get("/:id", getUserById);
-router.get("/", getUsers);
-router.put("/userpage", authGuard, validate, userPage);
 
 module.exports = router;

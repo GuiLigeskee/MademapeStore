@@ -2,7 +2,7 @@ import { api, requestConfig } from "../utils/config";
 
 // Get button details TESTE
 const buttonDetails = async (id, token) => {
-  const config = requestConfig("GET", null, token);
+  const config = requestConfig("GET");
 
   try {
     const res = await fetch(api + "/button/details/" + id, config)
@@ -32,8 +32,8 @@ const createButtonService = async (data, token) => {
 };
 
 // Get user photos
-const getUserButtons = async (id, token) => {
-  const config = requestConfig("GET", null, token);
+const getUserButtons = async (id) => {
+  const config = requestConfig("GET");
 
   try {
     const res = await fetch(api + "/button/user/" + id, config)
@@ -46,7 +46,7 @@ const getUserButtons = async (id, token) => {
   }
 };
 
-// Update a photo
+// Update button
 const updateButtonService = async (data, id, token) => {
   const config = requestConfig("PUT", data, token);
 

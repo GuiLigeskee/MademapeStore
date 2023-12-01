@@ -43,10 +43,8 @@ export const createButton = createAsyncThunk(
 // Get user buttons
 export const getUserButtons = createAsyncThunk(
   "button/userbuttons",
-  async (id, thunkAPI) => {
-    const token = thunkAPI.getState().auth.user.token;
-
-    const data = await ButtonService.getUserButtons(id, token);
+  async (id) => {
+    const data = await ButtonService.getUserButtons(id);
 
     return data;
   }

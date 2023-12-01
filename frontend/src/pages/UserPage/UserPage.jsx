@@ -22,12 +22,6 @@ import Pix from "../../assets/pix.png";
 
 import { uploads } from "../../utils/config";
 
-// components
-import Message from "../../components/Messages/Message";
-import { Link } from "react-router-dom";
-import { BsPencilFill, BsXLg, BsFillPlusCircleFill } from "react-icons/bs";
-import ReactLoading from "react-loading";
-
 // hooks
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";

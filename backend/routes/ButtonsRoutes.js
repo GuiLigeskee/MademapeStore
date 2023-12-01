@@ -20,10 +20,9 @@ const {
 } = require("../middlewares/buttonValidation");
 
 // Routes
-// TESTE
-router.get("/details/:id", authGuard, getCurrentButton);
+router.get("/details/:id", getCurrentButton);
 
-router.get("/user/:id", authGuard, getUserButtons);
+router.get("/user/:id", getUserButtons);
 router.post(
   "/create",
   authGuard,
