@@ -28,6 +28,7 @@ import Globo from "../../assets/globo.png";
 import Spotify from "../../assets/spotify.png";
 import Discord from "../../assets/discord.png";
 import Money from "../../assets/circulo-usd.png";
+import Pinterest from "../../assets/pinterest.png"
 
 const CreateButton = () => {
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const CreateButton = () => {
     Discord,
     Spotify,
     Github,
+    Pinterest
   ];
 
   const handleIconSelect = (index) => {

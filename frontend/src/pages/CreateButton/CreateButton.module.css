@@ -99,15 +99,15 @@ label p {
 .icon-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
 }
 
 .icon-item {
   border: 2px solid #000000;
   background-color: #e0dbd3;
   cursor: pointer;
-  width: 5em;
-  height: 5em;
+  width: 3.5em;
+  height: 3.5em;
   transition: border-color 0.3s;
   display: flex;
   justify-content: center;

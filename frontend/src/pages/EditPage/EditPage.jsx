@@ -16,6 +16,7 @@ import Globo from "../../assets/globo.png";
 import Spotify from "../../assets/spotify.png";
 import Discord from "../../assets/discord.png";
 import Money from "../../assets/circulo-usd.png";
+import Pinterest from "../../assets/pinterest.png"
 
 // Hooks
 import React, { useEffect, useState } from "react";
@@ -66,6 +67,7 @@ const EditPage = () => {
     Discord,
     Spotify,
     Github,
+    Pinterest
   ];
 
   // Load user data

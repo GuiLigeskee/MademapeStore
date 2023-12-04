@@ -19,6 +19,7 @@ import Email from "../../assets/o-email.png";
 import Maps from "../../assets/maps.png";
 import Cellphone from "../../assets/cellphone.png";
 import Pix from "../../assets/pix.png";
+import Pinterest from "../../assets/pinterest.png"
 
 import { uploads } from "../../utils/config";
 
@@ -65,6 +66,7 @@ const UserPage = () => {
     Discord,
     Spotify,
     Github,
+    Pinterest
   ];
 
   useEffect(() => {

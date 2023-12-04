@@ -28,6 +28,7 @@ import Globo from "../../assets/globo.png";
 import Spotify from "../../assets/spotify.png";
 import Discord from "../../assets/discord.png";
 import Money from "../../assets/circulo-usd.png";
+import Pinterest from "../../assets/pinterest.png"
 
 const UpdateButton = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ const UpdateButton = () => {
     Discord,
     Spotify,
     Github,
+    Pinterest
   ];
 
   const handleIconSelect = (index) => {
@@ -98,7 +100,7 @@ const UpdateButton = () => {
 
     resetMessage();
 
-    navigate(`/user-page/${user._id}`);
+    navigate(`/edit-page/${user._id}`);
   };
 
   return (
