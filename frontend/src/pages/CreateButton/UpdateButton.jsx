@@ -100,7 +100,7 @@ const UpdateButton = () => {
 
     resetMessage();
 
-    navigate(`/edit-page/${user._id}`);
+    navigate(`/user-page/${user._id}`);
   };
 
   return (

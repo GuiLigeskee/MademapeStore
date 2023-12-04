@@ -73,7 +73,7 @@ const EditPage = () => {
   // Load user data
   useEffect(() => {
     dispatch(getUserButtons(id));
-  }, [dispatch, id]);
+  }, [dispatch]);
 
   // Exclude a button
   const handleDelete = (id) => {
