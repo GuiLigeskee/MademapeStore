@@ -50,13 +50,6 @@ const register = async (req, res) => {
   });
 };
 
-// Get logged in user
-const getCurrentUser = async (req, res) => {
-  const user = req.user;
-
-  res.status(200).json(user);
-};
-
 // Sign user in
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -181,6 +174,13 @@ const update = async (req, res) => {
   res.status(200).json(user);
 
   // console.log("Perfil atualizado com sucesso!");
+};
+
+// Get logged in user
+const getCurrentUser = async (req, res) => {
+  const user = req.user;
+
+  res.status(200).json(user);
 };
 
 // Get user by id
