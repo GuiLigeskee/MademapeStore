@@ -1,5 +1,5 @@
 .user-page {
-  padding: 1.5em 2em;
+  padding: 1em 2em;
   text-align: center;
   background-color: #000000;
   border: #ffffff;
@@ -32,7 +32,7 @@ body.modo-claro {
 }
 
 .user-name {
-  margin: 1em 0;
+  margin: 0.5em 0;
 }
 
 .fixed-buttons {
@@ -55,7 +55,7 @@ body.modo-claro {
 }
 
 .buttons {
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 .label {
@@ -67,13 +67,12 @@ body.modo-claro {
 }
 
 .square-button-long {
-  width: auto;
   display: flex;
   justify-content: space-between;
   padding: 0.5em 2em;
   align-items: center;
-  border-radius: 10px;
-  margin: 0 auto 1.5em auto;
+  border-radius: 5px;
+  margin: 0 auto 1em auto;
   font-family: "Fira Sans", sans-serif;
 }
 
