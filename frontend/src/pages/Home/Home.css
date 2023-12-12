@@ -43,3 +43,12 @@
 .cta-button:hover {
     background-color: #a86405;      
 }
+
+@media screen and (max-width: 768px) {
+    .home {
+      width: 100%;
+      margin: 0;
+      border: none;
+      padding: 2em;
+    }
+  }
