@@ -9,6 +9,25 @@
   height: auto;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.header > div {
+  cursor: pointer;
+}
+
+.header svg {
+  font-size: 1.5em;
+}
+
+.header p {
+  font-size: .6em;
+}
+
+
 body.modo-claro {
   background-color: #ffffff;
 }

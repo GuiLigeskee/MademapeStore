@@ -1,6 +1,9 @@
 import styles from "./UserPage.module.css";
+import { uploads } from "../../utils/config";
+import { Helmet } from 'react-helmet';
 
 // icons
+import { BsDownload, BsShare } from "react-icons/bs";
 import Whatsapp from "../../assets/whatsapp.png";
 import Instagram from "../../assets/instagram.png";
 import Facebook from "../../assets/facebook.png";
@@ -21,7 +24,6 @@ import Cellphone from "../../assets/cellphone.png";
 import Pix from "../../assets/pix.png";
 import Pinterest from "../../assets/pinterest.png"
 
-import { uploads } from "../../utils/config";
 
 // hooks
 import { useEffect, useState, useRef } from "react";
@@ -35,6 +37,9 @@ import {
   getUserButtons,
   resetMessage,
 } from "../../Slices/ButtonSlice";
+
+// Vcard
+import vCard from 'vcards-js';
 
 const UserPage = () => {
   const { id } = useParams();
@@ -104,12 +109,75 @@ const UserPage = () => {
     }
   };
 
+  const generateVCard = () => {
+    // Create a new vCard
+    const vCardObj = vCard();
+
+    // Set user information
+    vCardObj.firstName = user.name;
+    vCardObj.note = user.bio;
+
+    // Set phone numbers
+    if (user.tell) {
+      vCardObj.homePhone = user.tell;
+    }
+    if (user.whatsapp) {
+      vCardObj.cellPhone = user.whatsapp;
+    }
+
+    // Set email
+    if (user.email) {
+      vCardObj.email = user.email;
+    }
+
+    // Set address
+    if (user.address) {
+      vCardObj.homeAddress.street = user.address;
+    }
+
+    // Set user image with dynamically determined type
+    if (user.profileImage) {
+      const imageType = user.profileImage.split('.').pop().toUpperCase();
+      vCardObj.photo.embedFromFile = {
+        uri: user.profileImage,
+        type: imageType,
+      };
+    }
+
+    // Download vCard
+    const vCardContent = vCardObj.getFormattedString();
+    const blob = new Blob([vCardContent], { type: 'text/vcard' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'user.vcf';
+    link.click();
+  };
+
+
   return (
     <div
-      className={`${styles["user-page"]} ${
-        user.darkTheme ? styles["modo-escuro"] : styles["modo-claro"]
-      }`}
+      className={`${styles["user-page"]} ${user.darkTheme ? styles["modo-escuro"] : styles["modo-claro"]
+        }`}
     >
+      <div className={styles['header']}>
+        <div onClick={generateVCard}>
+          <BsDownload />
+          <p>Adicionar na agenda</p>
+        </div>
+        <div>
+          <BsShare />
+          <p>Compartilhar</p>
+        </div>
+      </div>
+      <Helmet>
+        {/* Open Graph meta tags */}
+        <meta property="og:title" content="User Page Title" />
+        <meta property="og:description" content="User bio or other relevant description" />
+        <meta property="og:image" content="URL to the user's profile image" />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="website" />
+        {/* Add more Open Graph meta tags as needed */}
+      </Helmet>
       <div>
         {user.profileImage && (
           <img
