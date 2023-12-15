@@ -9,11 +9,19 @@
   height: auto;
 }
 
+.button-share,
+.button-vcard {
+  position: absolute;
+  display: flex;
+  flex-direction: column; /* Ajuste para empilhar elementos em coluna */
+  align-items: center; /* Para centralizar verticalmente */
+}
+
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
 }
-
 
 .header > div {
   cursor: pointer;
@@ -24,7 +32,15 @@
 }
 
 .header p {
-  font-size: .6em;
+  font-size: 0.6em;
+}
+
+.button-vcard {
+  left: 0;
+}
+
+.button-share {
+  right: 0;
 }
 
 

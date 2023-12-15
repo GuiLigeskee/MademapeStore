@@ -160,24 +160,22 @@ const UserPage = () => {
         }`}
     >
       <div className={styles['header']}>
-        <div onClick={generateVCard}>
+        <div className={styles["button-vcard"]} onClick={generateVCard}>
           <BsDownload />
           <p>Adicionar na agenda</p>
         </div>
-        <div>
+        <div className={styles["button-share"]}>
           <BsShare />
           <p>Compartilhar</p>
         </div>
       </div>
-      <Helmet>
-        {/* Open Graph meta tags */}
+      {/* <Helmet>
         <meta property="og:title" content="User Page Title" />
         <meta property="og:description" content="User bio or other relevant description" />
         <meta property="og:image" content="URL to the user's profile image" />
         <meta property="og:url" content={window.location.href} />
         <meta property="og:type" content="website" />
-        {/* Add more Open Graph meta tags as needed */}
-      </Helmet>
+      </Helmet> */}
       <div>
         {user.profileImage && (
           <img
