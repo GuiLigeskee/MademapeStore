@@ -22,7 +22,7 @@ import Pinterest from "../../assets/pinterest.png"
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useResetComponentMessage } from "../../Hooks/useResetComponentMessage";
-import { BsPencilFill, BsXLg, BsFillPlusCircleFill } from "react-icons/bs";
+import { BsPencilFill, BsTrash3Fill} from "react-icons/bs";
 
 // Compoments
 import Message from "../../components/Messages/Message";
@@ -102,7 +102,7 @@ const EditPage = () => {
                   <Link to={`/update-button/${button._id}`}>
                     <BsPencilFill />
                   </Link>
-                  <BsXLg onClick={() => handleDelete(button._id)} id="delete" />
+                  <BsTrash3Fill  onClick={() => handleDelete(button._id)} id="delete" />
                 </div>
               )}
               <a href={button.url} target="_blank">

@@ -11,25 +11,6 @@
   font-size: 1em;
 }
 
-/* #search-form {
-  position: relative;
-  width: 25%;
-}
-
-#search-form svg {
-  position: absolute;
-  top: 10px;
-  left: 9px;
-}
-
-#search-form input {
-  padding-left: 2.5em;
-  border: none;
-  border-radius: 10px;
-  margin: 0 auto;
-  width: 100%;
-} */
-
 #nav-links {
   display: flex;
   align-items: center;
@@ -38,6 +19,9 @@
 
 #nav-links li {
   margin-right: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #nav-links span {

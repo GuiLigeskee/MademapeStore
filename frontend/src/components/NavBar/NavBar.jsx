@@ -10,8 +10,8 @@ import MadeLinkLogo from "../../assets/MadeLink.jpeg";
 // Hooks
 import {
   BsHouseDoorFill,
-  BsFillPersonFill,
-  BsFillGearFill,
+  BsPersonFill ,
+  BsGearFill  ,
 } from "react-icons/bs";
 import { useState } from "react";
 import { useAuth } from "../../Hooks/useAuth";
@@ -61,14 +61,14 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink to={`/edit-page/${user._id}`}>
-                    <BsFillGearFill />
+                    < BsGearFill  />
                   </NavLink>
                 </li>
               </>
             )}
             <li>
               <NavLink to="/profile">
-                <BsFillPersonFill />
+                <BsPersonFill  />
               </NavLink>
             </li>
             <li>

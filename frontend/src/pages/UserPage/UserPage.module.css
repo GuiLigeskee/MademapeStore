@@ -13,8 +13,8 @@
 .button-vcard {
   position: absolute;
   display: flex;
-  flex-direction: column; /* Ajuste para empilhar elementos em coluna */
-  align-items: center; /* Para centralizar verticalmente */
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
